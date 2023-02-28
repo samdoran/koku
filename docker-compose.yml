@@ -387,9 +387,9 @@ services:
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD-postgres}
       - _PG_CREATE_DATABASES=${DATABASE_NAME-postgres}|${DATABASE_USER-postgres},unleash|${DATABASE_USER-postgres}
     ports:
-      - 15432:5432
+      - 5432:5432
     volumes:
-      - ./pg_data:/var/lib/${DATABASE_DATA_DIR-postgresql}/data
+      - psql-data:/var/lib/${DATABASE_DATA_DIR-postgresql}/data
       - ./pg_init:/docker-entrypoint-initdb.d
     command:
       # This command give more precise control over the parameter settings
@@ -522,7 +522,7 @@ services:
       - 9090:9090
     command: server /data --console-address ":9090"
     volumes:
-      - ./.trino/parquet_data:/data
+      - minio-data:/data
 
   create-parquet-bucket:
     image: minio/mc:latest
@@ -588,8 +588,7 @@ services:
       - ./deploy/trino/etc/catalog/hive.properties:/etc/trino/catalog/hive.properties
       - ./deploy/trino/etc/catalog/postgres.properties:/etc/trino/catalog/postgres.properties
       - ./deploy/hadoop/hadoop-config/core-site.xml:/etc/trino/hadoop-config/core-site.xml
-      - ./.trino/trino/trino-data:/data/trino/data
-      - ./.trino/trino/trino-logs:/data/trino/logs
+      - trino-data:/data/trino/data
     links:
       - hive-metastore
     depends_on:
@@ -598,3 +597,8 @@ services:
       nofile:
         soft: 4096
         hard: 4096
+
+volumes:
+  trino-data:
+  psql-data:
+  minio-data:
