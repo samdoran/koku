@@ -1,4 +1,4 @@
-FROM minio/minio:RELEASE.2022-11-26T22-43-32Z
+FROM minio/minio:RELEASE.2023-01-25T00-19-54Z
 
 ARG USER_ID=1000
 
@@ -7,7 +7,7 @@ USER root
 RUN groupadd -g ${USER_ID} kminio \
     && useradd -m -s /bin/bash -g ${USER_ID} -u ${USER_ID} -G root kminio \
     && mkdir /data || true \
-    && chown root:root /data \
+    && chown ${USER_ID}:root /data \
     && chmod u+rwx /data \
     && chmod g+rwx /opt
 
