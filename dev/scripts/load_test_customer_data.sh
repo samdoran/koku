@@ -19,7 +19,7 @@
 #
 
 usage() {
-    log-info "Usage: `basename $0` <command>"
+    log-info "Usage: $(basename "$0") <command>"
     log-info ""
     log-info "[source name]:"
     log-info "\t AWS          build and populate test customer data for AWS"
