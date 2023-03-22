@@ -115,7 +115,7 @@ add_cost_models() {
   #
   UUID=$(psql $DATABASE_NAME --no-password --tuples-only -c "SELECT uuid from public.api_provider WHERE name = '$1'" | head -1 | sed -e 's/^[ \t]*//')
   if [[ ! -z $UUID ]]; then
-      COST_MODEL_JSON=$(cat "$DEV_SCRIPTS_PATH/cost_models/$2" | sed -e "s/PROVIDER_UUID/$UUID/g")
+      COST_MODEL_JSON=$(sed -e "s/PROVIDER_UUID/$UUID/g" "$DEV_SCRIPTS_PATH/cost_models/$2")
 
       log-info "creating cost model, source_name: $1, uuid: $UUID"
       RESPONSE=$(curl -s -w "%{http_code}\n" \
