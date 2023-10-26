@@ -61,17 +61,17 @@ class GCPReportParquetSummaryUpdaterTest(MasuTestCase):
         self.assertEqual(end, self.dh.last_month_end.date())
 
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_gcp_topology_information_tables"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_gcp_topology_information_tables"
     )
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"
     )
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.update_line_item_daily_summary_with_enabled_tags"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.update_line_item_daily_summary_with_enabled_tags"
     )
     @patch("masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_tags_summary_table")
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_line_item_daily_summary_table_trino"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_line_item_daily_summary_table_trino"
     )
     def test_update_daily_summary_tables(
         self, mock_trino, mock_tag_update, mock_summary_update, mock_delete, mock_topo
@@ -109,17 +109,17 @@ class GCPReportParquetSummaryUpdaterTest(MasuTestCase):
         self.assertEqual(end_return, end)
 
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_gcp_topology_information_tables"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_gcp_topology_information_tables"
     )
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"
     )
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.update_line_item_daily_summary_with_enabled_tags"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.update_line_item_daily_summary_with_enabled_tags"
     )
     @patch("masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_tags_summary_table")
     @patch(
-        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_line_item_daily_summary_table_trino"  # noqa: E501
+        "masu.processor.gcp.gcp_report_parquet_summary_updater.GCPReportDBAccessor.populate_line_item_daily_summary_table_trino"
     )
     def test_update_daily_summary_tables_no_invoice_month(
         self, mock_trino, mock_tag_update, mock_summary_update, mock_delete, mock_topo

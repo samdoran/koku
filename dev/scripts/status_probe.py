@@ -49,7 +49,7 @@ logging.basicConfig(
 )
 LOG = logging.getLogger("status_probe")
 
-if args.status_url:  # noqa: C901
+if args.status_url:
     LOG.debug(f"Reading status from {args.status_url}")
     resp = requests.get(args.status_url)
     if resp.status_code != 200:

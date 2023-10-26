@@ -172,14 +172,14 @@ def deleted_archived_with_prefix(s3_bucket_name, prefix):
     return remaining_objects
 
 
-@celery_app.task(  # noqa: C901
+@celery_app.task(
     name="masu.celery.tasks.delete_archived_data",
     queue=REMOVE_EXPIRED_DATA_QUEUE,
     autoretry_for=(ClientError,),
     max_retries=10,
     retry_backoff=10,
 )
-def delete_archived_data(schema_name, provider_type, provider_uuid):  # noqa: C901
+def delete_archived_data(schema_name, provider_type, provider_uuid):
     """
     Delete archived data from our S3 bucket for a given provider.
 

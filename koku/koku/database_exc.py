@@ -119,7 +119,7 @@ class ExtendedDBException(Exception):
         else:
             self.koku_exc_line = self.koku_exc_line_num = self.koku_exc_file = None
 
-    def get_tables_from_tokens(self, tokens, num_tokens, dml_type=None, seen_object=None, identifiers=None):  # noqa
+    def get_tables_from_tokens(self, tokens, num_tokens, dml_type=None, seen_object=None, identifiers=None):
         if seen_object is None:
             seen_object = set()
         if identifiers is None:

@@ -88,7 +88,7 @@ class AzureTagQueryHandlerTest(IamTestCase):
             obj = AzureCostEntryLineItemDailySummary.objects.values("subscription_guid").first()
             subscription_guid = obj.get("subscription_guid")
 
-        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[subscription_guid]={subscription_guid}"  # noqa: E501
+        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[subscription_guid]={subscription_guid}"
         query_params = self.mocked_query_params(url, AzureTagView)
         handler = AzureTagQueryHandler(query_params)
         query_output = handler.execute_query()

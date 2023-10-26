@@ -243,7 +243,7 @@ class KafkaMessageProcessorTest(IamTestCase):
 
     def test_create_msg_processor_various_headers_failures(self):
         """Test create_msg_processor various kafka headers."""
-        header_missing_account_number = "eyJpZGVudGl0eSI6IHsidXNlciI6IHsiaXNfb3JnX2FkbWluIjogImZhbHNlIiwgInVzZXJuYW1lIjogInNvdXJjZXMiLCAiZW1haWwiOiAic291cmNlc0Bzb3VyY2VzLmlvIn0sICJpbnRlcm5hbCI6IHsib3JnX2lkIjogIjU0MzIxIn19fQ=="  # noqa: E501
+        header_missing_account_number = "eyJpZGVudGl0eSI6IHsidXNlciI6IHsiaXNfb3JnX2FkbWluIjogImZhbHNlIiwgInVzZXJuYW1lIjogInNvdXJjZXMiLCAiZW1haWwiOiAic291cmNlc0Bzb3VyY2VzLmlvIn0sICJpbnRlcm5hbCI6IHsib3JnX2lkIjogIjU0MzIxIn19fQ=="
         event = KAFKA_APPLICATION_CREATE
         account_id = "10002"
         table = [

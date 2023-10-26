@@ -11,7 +11,7 @@ from api.iam.test.iam_test_case import IamTestCase
 class TestFKViolation(IamTestCase):
     INTEGRITYERRORSTR = """insert or update on table "reporting_awscostentrybill" violates foreign key constraint "reporting_awscostent_provider_id_a08725b3_fk_api_provi"
 DETAIL:  Key (provider_id)=(fbe0593a-1b83-4182-b23e-08cd190ed939) is not present in table "api_provider".
-"""  # noqa
+"""
     INTEGRITYERROR = IntegrityError(INTEGRITYERRORSTR)
 
     def test_init_from_exception(self):

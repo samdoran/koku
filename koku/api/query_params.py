@@ -261,7 +261,7 @@ class QueryParameters:
             org_unit_accounts.extend(list(org_accounts))
         return org_unit_accounts
 
-    def _set_access(self, provider, filter_key, access_key, raise_exception=True):  # noqa C901
+    def _set_access(self, provider, filter_key, access_key, raise_exception=True):  # C901
         """Alter query parameters based on user access."""
         access_list = self.access.get(access_key, {}).get("read", [])
         access_filter_applied = False

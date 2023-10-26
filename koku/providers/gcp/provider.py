@@ -104,7 +104,7 @@ class GCPProvider(ProviderInterface):
             message = f"Invalid Dataset ID: {str(data_source.get('dataset'))}"
             raise serializers.ValidationError(error_obj(key, message))
 
-    def cost_usage_source_is_reachable(self, credentials, data_source):  # noqa: C901
+    def cost_usage_source_is_reachable(self, credentials, data_source):
         """
         Verify that the GCP bucket exists and is reachable.
 

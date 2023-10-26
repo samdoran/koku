@@ -115,7 +115,7 @@ class OCPTagQueryHandlerTest(IamTestCase):
             namespace_obj = OCPUsageLineItemDailySummary.objects.values("namespace").first()
             namespace = namespace_obj.get("namespace")
 
-        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[project]={namespace}"  # noqa: E501
+        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[project]={namespace}"
         query_params = self.mocked_query_params(url, OCPTagView)
         handler = OCPTagQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -195,7 +195,7 @@ class OCPTagQueryHandlerTest(IamTestCase):
 
     def test_get_tag_type_filter_pod(self):
         """Test that all usage tags are returned with pod type filter."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&filter[type]=pod"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&filter[type]=pod"
         query_params = self.mocked_query_params(url, OCPTagView)
         handler = OCPTagQueryHandler(query_params)
 
@@ -219,7 +219,7 @@ class OCPTagQueryHandlerTest(IamTestCase):
 
     def test_get_tag_type_filter_storage(self):
         """Test that all storage tags are returned with storage type filter."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&filter[type]=storage"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&filter[type]=storage"
         query_params = self.mocked_query_params(url, OCPTagView)
         handler = OCPTagQueryHandler(query_params)
 

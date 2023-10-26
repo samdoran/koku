@@ -374,7 +374,7 @@ class AWSReportViewTest(IamTestCase):
 
     def test_ou_group_by_default_pagination(self):
         """Test that the default pagination works."""
-        qs = "?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month"  # noqa: E501
+        qs = "?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month"
         url = reverse("reports-aws-costs") + qs
         response = self.client.get(url, **self.headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -397,7 +397,7 @@ class AWSReportViewTest(IamTestCase):
         limit = 1
         offset = 0
 
-        qs = f"?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[limit]={limit}&filter[offset]={offset}"  # noqa: E501
+        qs = f"?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[limit]={limit}&filter[offset]={offset}"
         url = reverse("reports-aws-costs") + qs
         response = self.client.get(url, **self.headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -423,7 +423,7 @@ class AWSReportViewTest(IamTestCase):
         limit = 1
         offset = 10
 
-        qs = f"?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[limit]={limit}&filter[offset]={offset}"  # noqa: E501
+        qs = f"?group_by[org_unit_id]=R_001&filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[limit]={limit}&filter[offset]={offset}"
         url = reverse("reports-aws-costs") + qs
         response = self.client.get(url, **self.headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

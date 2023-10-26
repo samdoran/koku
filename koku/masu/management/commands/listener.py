@@ -48,7 +48,7 @@ class Command(BaseCommand):
 
         # This is a special case because check_migrations() returns three values
         # True means migrations are up-to-date
-        while check_migrations() != True:  # noqa
+        while check_migrations() != True:
             LOG.warning("Migrations not done. Sleeping")
             time.sleep(5)
 

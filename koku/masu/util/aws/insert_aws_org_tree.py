@@ -112,7 +112,7 @@ class InsertAwsOrgTree:
                     removed_org_unit.save()
                     LOG.info(f"Updating org={removed_org_unit.org_unit_id} with delete_timestamp={date}")
 
-    def insert_tree(self, day_list):  # noqa: C901
+    def insert_tree(self, day_list):
         """Inserts the tree into the database."""
         try:
             for day_dict in day_list:

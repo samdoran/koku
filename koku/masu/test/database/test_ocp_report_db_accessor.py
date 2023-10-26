@@ -175,7 +175,7 @@ select * from eek where val1 in {{report_period_id}} ;
                 start_date, end_date, report_period_id, cluster_id, cluster_alias, source
             )
 
-    def test_populate_tag_based_usage_costs(self):  # noqa: C901
+    def test_populate_tag_based_usage_costs(self):
         """
         Test that the usage costs are updated when tag values are passed in.
         This test runs for both Infrastructure and Supplementary cost types
@@ -345,7 +345,7 @@ select * from eek where val1 in {{report_period_id}} ;
                                     actual_diff = float(post_record[1] - vals[1])
                                 self.assertAlmostEqual(actual_diff, expected_diff)
 
-    def test_populate_tag_based_default_usage_costs(self):  # noqa: C901
+    def test_populate_tag_based_default_usage_costs(self):
         """Test that the usage costs are updated correctly when default tag values are passed in."""
         # set up the key value pairs to test and the map for cost type and the fields it needs
         cost_type = {

@@ -1,4 +1,3 @@
-# noqa
 import binascii
 import logging
 from base64 import b64decode

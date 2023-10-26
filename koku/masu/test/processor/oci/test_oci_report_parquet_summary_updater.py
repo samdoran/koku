@@ -58,11 +58,11 @@ class OCIReportParquetSummaryUpdaterTest(MasuTestCase):
         self.assertEqual(end, org_end.date())
 
     @patch(
-        "masu.processor.oci.oci_report_parquet_summary_updater.OCIReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"  # noqa: E501
+        "masu.processor.oci.oci_report_parquet_summary_updater.OCIReportDBAccessor.delete_line_item_daily_summary_entries_for_date_range_raw"
     )
     @patch("masu.processor.oci.oci_report_parquet_summary_updater.OCIReportDBAccessor.populate_tags_summary_table")
     @patch(
-        "masu.processor.oci.oci_report_parquet_summary_updater.OCIReportDBAccessor.populate_line_item_daily_summary_table_trino"  # noqa: E501
+        "masu.processor.oci.oci_report_parquet_summary_updater.OCIReportDBAccessor.populate_line_item_daily_summary_table_trino"
     )
     def test_update_daily_summary_tables(self, mock_trino, mock_tag_update, mock_delete):
         """Test that we run Trino summary."""

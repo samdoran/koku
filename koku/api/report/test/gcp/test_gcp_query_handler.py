@@ -145,7 +145,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 service[0]
                 for service in GCPCostEntryLineItemDailySummary.objects.values_list("service_alias").distinct()
             ]
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -177,7 +177,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 for service in GCPCostEntryLineItemDailySummary.objects.values_list("service_alias").distinct()
             ]
             service = valid_services[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]={service}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -207,7 +207,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_by_filtered_service(self):
         """Test execute_query monthly breakdown by filtered service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -229,7 +229,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 service[0] for service in GCPCostEntryLineItemDailySummary.objects.values_list("service_id").distinct()
             ]
             service = valid_services[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]={service}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -251,7 +251,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_current_month_by_account(self):
         """Test execute_query for current month on monthly breakdown by account."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -275,7 +275,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_by_account_by_service(self):
         """Test execute_query for current month breakdown by account by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&group_by[service]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -301,7 +301,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly breakdown by service with limit."""
         # This might change as we add more gcp generators to nise
         limit = 1
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]={limit}&group_by[service]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]={limit}&group_by[service]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -331,7 +331,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_account_w_order(self):
         """Test execute_query for current month on monthly breakdown by account with asc order."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -361,7 +361,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_account_w_order_by_account(self):
         """Test execute_query for current month on monthly breakdown by account with asc order."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&order_by[account]=asc&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-2&filter[resolution]=monthly&order_by[account]=asc&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -393,7 +393,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_project(self):
         """Test execute_query for current month on monthly breakdown by project."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[gcp_project]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[gcp_project]=*"
         with tenant_context(self.tenant):
             project_count = (
                 GCPCostEntryLineItemDailySummary.objects.filter(usage_start__gte=self.dh.this_month_start)
@@ -432,7 +432,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 .values("project_id")[0]
                 .get("project_id")
             )
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[gcp_project]={project}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[gcp_project]={project}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -462,7 +462,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
             account = GCPCostEntryLineItemDailySummary.objects.filter(
                 usage_start__gte=self.dh.this_month_start
             ).values("account_id")[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -486,7 +486,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly filtered by service."""
         with tenant_context(self.tenant):
             service = GCPCostEntryLineItemDailySummary.objects.values("service_id")[0].get("service_id")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]={service}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -514,7 +514,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_current_month_filter_region(self):
         """Test execute_query for current month on monthly filtered by region."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -538,7 +538,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly excluded by service."""
         with tenant_context(self.tenant):
             service = GCPCostEntryLineItemDailySummary.objects.values("service_id")[0].get("service_id")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[service]={service}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -551,7 +551,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
     def test_execute_query_current_month_filter_region_csv(self, mock_accept):
         """Test execute_query on monthly filtered by region for csv."""
         mock_accept.return_value = "text/csv"
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -575,7 +575,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly by account with limt as csv."""
         mock_accept.return_value = "text/csv"
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -597,7 +597,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
     def test_execute_query_w_delta(self):
         """Test grouped by deltas."""
         path = reverse("reports-gcp-costs")
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&delta=cost"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&delta=cost"
         query_params = self.mocked_query_params(url, GCPCostView, path)
         handler = GCPReportQueryHandler(query_params)
         # test the calculations
@@ -691,7 +691,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_orderby_delta(self):
         """Test execute_query with ordering by delta ascending."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[delta]=asc&group_by[account]=*&delta=cost"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[delta]=asc&group_by[account]=*&delta=cost"
         path = reverse("reports-gcp-costs")
         query_params = self.mocked_query_params(url, GCPCostView, path)
         handler = GCPReportQueryHandler(query_params)
@@ -733,7 +733,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_rank_list_by_account(self):
         """Test rank list limit with account alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         ranks = [
@@ -905,7 +905,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
     def test_rank_list_by_service_alias(self):
         """Test rank list limit with service_alias grouping."""
         # This might change as we add more gcp generators to nise
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[service]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         ranks = [
@@ -1076,7 +1076,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
     def test_rank_list_with_offset(self):
         """Test rank list limit and offset with account alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         ranks = [
@@ -1207,7 +1207,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
 
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1274,12 +1274,12 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 GCPCostSummaryByServiceP,
             ),
             (
-                "?filter[service]=Virtual%20Network,VPN,DNS,Traffic%20Manager,ExpressRoute,Load%20Balancer,Application%20Gateway",  # noqa: E501
+                "?filter[service]=Virtual%20Network,VPN,DNS,Traffic%20Manager,ExpressRoute,Load%20Balancer,Application%20Gateway",
                 GCPCostView,
                 GCPCostSummaryByServiceP,
             ),
             (
-                "?filter[service]=Virtual%20Network,VPN,DNS,Traffic%20Manager,ExpressRoute,Load%20Balancer,Application%20Gateway&group_by[account]=*",  # noqa: E501
+                "?filter[service]=Virtual%20Network,VPN,DNS,Traffic%20Manager,ExpressRoute,Load%20Balancer,Application%20Gateway&group_by[account]=*",
                 GCPCostView,
                 GCPCostSummaryByServiceP,
             ),
@@ -1292,7 +1292,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
                 handler = GCPReportQueryHandler(query_params)
                 self.assertEqual(handler.query_table, table)
 
-    def test_source_uuid_mapping(self):  # noqa: C901
+    def test_source_uuid_mapping(self):
         """Test source_uuid is mapped to the correct source."""
         # Find the correct expected source uuid:
         with tenant_context(self.tenant):
@@ -1330,7 +1330,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
             account = GCPCostEntryLineItemDailySummary.objects.filter(
                 usage_start__gte=self.dh.this_month_start
             ).values("account_id")[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1378,7 +1378,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
 
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"
         query_params = self.mocked_query_params(url, GCPInstanceTypeView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1406,7 +1406,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
             account = GCPCostEntryLineItemDailySummary.objects.filter(
                 usage_start__gte=self.dh.this_month_start
             ).values("account_id")[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={account}"
         query_params = self.mocked_query_params(url, GCPInstanceTypeView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1433,7 +1433,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
             tag_object = GCPTagsSummary.objects.first()
             key = tag_object.key
             value = tag_object.values[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{key}]={value}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{key}]={value}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1446,7 +1446,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
 
         Query for storage, validating that cost totals are present.
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"
         query_params = self.mocked_query_params(url, GCPStorageView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1520,7 +1520,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         yesterday = self.dh.yesterday.date()
         yesterday_month = self.dh.yesterday - relativedelta(months=2)
 
-        url = f"?group_by[gcp_project]=*&order_by[cost]=desc&order_by[date]={yesterday_month.date()}&end_date={yesterday}&start_date={yesterday_month.date()}"  # noqa: E501
+        url = f"?group_by[gcp_project]=*&order_by[cost]=desc&order_by[date]={yesterday_month.date()}&end_date={yesterday}&start_date={yesterday_month.date()}"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1577,7 +1577,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
             if len(tag_dict.get("values")) > len(exclude_vals):
                 group_tag = tag_dict.get("key")
                 exclude_vals = tag_dict.get("values")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"
         query_params = self.mocked_query_params(url, GCPCostView)
         handler = GCPReportQueryHandler(query_params)
         data = handler.execute_query().get("data")
@@ -1599,7 +1599,7 @@ class GCPReportQueryHandlerTest(IamTestCase):
         """Test that the exclude feature works for all options."""
         exclude_opts = GCPExcludeSerializer._opfields
         for ex_opt in exclude_opts:
-            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
             for view in [GCPCostView, GCPStorageView, GCPInstanceTypeView]:
                 query_params = self.mocked_query_params(base_url, view)
                 handler = GCPReportQueryHandler(query_params)

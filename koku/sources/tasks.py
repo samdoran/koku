@@ -37,7 +37,7 @@ def delete_source(self, source_id, auth_header, koku_uuid, account_number, org_i
     mark_provider_as_inactive(koku_uuid)
     LOG.info(log_json(msg="deleting provider", provider_uuid=koku_uuid, source_id=source_id))
     coordinator = SourcesProviderCoordinator(source_id, auth_header, account_number, org_id)
-    coordinator.destroy_account(koku_uuid, self.request.retries)  # noqa: F821
+    coordinator.destroy_account(koku_uuid, self.request.retries)
     LOG.info(log_json(msg="deleted provider", provider_uuid=koku_uuid, source_id=source_id))
 
 

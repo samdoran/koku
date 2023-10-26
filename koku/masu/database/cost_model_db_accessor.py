@@ -151,8 +151,8 @@ class CostModelDBAccessor(KokuDBAccess):
         LOG.info("OCP Node rate: %s", str(node_rates))
         return node_rates
 
-    @property  # noqa: C901
-    def tag_based_price_list(self):  # noqa: C901
+    @property
+    def tag_based_price_list(self):
         """Return the rates definied on this cost model that come from tag based rates."""
         metric_rate_map = {}
         tag_based_price_list = None

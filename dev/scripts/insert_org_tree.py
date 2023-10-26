@@ -60,7 +60,7 @@ class UploadAwsTree:
     def upload_tree(self, provider_uuid):
         """Creates the curl command"""
         aws_org_tree_json = self.convert_tree_yaml_to_json(self.tree_yaml)
-        url = f"http://{self.masu_host}:{self.masu_port}/api/cost-management/v1/crawl_account_hierarchy/?provider_uuid={provider_uuid}"  # noqa: E501
+        url = f"http://{self.masu_host}:{self.masu_port}/api/cost-management/v1/crawl_account_hierarchy/?provider_uuid={provider_uuid}"
         try:
             requests.post(url, json=aws_org_tree_json)
         except Exception as e:

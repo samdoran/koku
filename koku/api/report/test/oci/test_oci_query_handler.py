@@ -163,7 +163,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 service[0]
                 for service in OCICostEntryLineItemDailySummary.objects.values_list("product_service").distinct()
             ]
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -197,7 +197,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 for service in OCICostEntryLineItemDailySummary.objects.values_list("product_service").distinct()
             ]
             service = valid_services[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]={service}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -236,7 +236,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 for service in OCICostEntryLineItemDailySummary.objects.values_list("product_service").distinct()
             ]
             service = valid_services[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]={service}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -269,7 +269,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_current_month_by_tenant(self):
         """Test execute_query for current month on monthly breakdown by tenant."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -299,7 +299,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_by_tenant_by_service(self):
         """Test execute_query for current month breakdown by tenant by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*&group_by[product_service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*&group_by[product_service]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -329,7 +329,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_tenant_w_limit(self):
         """Test execute_query for current month on monthly breakdown by tenant with limit."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -357,7 +357,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_tenant_w_order(self):
         """Test execute_query for current month on monthly breakdown by tenant with asc order."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -390,7 +390,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_tenant_w_order_by_tenant(self):
         """Test execute_query for current month on monthly breakdown by tenant with asc order."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[cost]=asc&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -425,7 +425,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_execute_query_curr_month_by_region(self):
         """Test execute_query for current month on monthly breakdown by region."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]=*"
         with tenant_context(self.tenant):
             location_count = (
                 OCICostEntryLineItemDailySummary.objects.filter(usage_start__gte=self.dh.this_month_start)
@@ -467,7 +467,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 .values("region")[0]
                 .get("region")
             )
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]={location}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]={location}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -501,7 +501,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
             tenant = OCICostEntryLineItemDailySummary.objects.filter(usage_start__gte=self.dh.this_month_start).values(
                 "payer_tenant_id"
             )[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[payer_tenant_id]={tenant}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[payer_tenant_id]={tenant}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -528,7 +528,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly filtered by service."""
         with tenant_context(self.tenant):
             service = OCICostEntryLineItemDailySummary.objects.values("product_service")[0].get("product_service")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[product_service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[product_service]={service}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -565,7 +565,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 .values("region")[0]
                 .get("region")
             )
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={location}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={location}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -593,7 +593,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly excluded by service."""
         with tenant_context(self.tenant):
             service = OCICostEntryLineItemDailySummary.objects.values("product_service")[0].get("product_service")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[product_service]={service}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[product_service]={service}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -616,7 +616,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 .get("region")
             )
         mock_accept.return_value = "text/csv"
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={location}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={location}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -644,7 +644,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         """Test execute_query for current month on monthly by tenant with limt as csv."""
         mock_accept.return_value = "text/csv"
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -690,7 +690,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_rank_list_by_tenant(self):
         """Test rank list limit with tenant alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         ranks = [
@@ -840,7 +840,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_rank_list_by_product_service(self):
         """Test rank list limit with product_service grouping."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[product_service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[product_service]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         ranks = [
@@ -989,7 +989,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
 
     def test_rank_list_with_offset(self):
         """Test rank list limit and offset with tenant alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         ranks = [
@@ -1105,7 +1105,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
 
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[payer_tenant_id]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1128,7 +1128,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
 
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"
         query_params = self.mocked_query_params(url, OCIInstanceTypeView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1159,7 +1159,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         Query for storage, validating that cost totals are present.
 
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[product_service]=*"
         query_params = self.mocked_query_params(url, OCIStorageView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1268,7 +1268,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 .aggregate(**{ag_key: Sum(F("markup_cost") + F("cost"))})
             )
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]={filter_value}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]={filter_value}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
 
@@ -1294,7 +1294,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 usage_start__gte=self.dh.this_month_start, tags__has_key=filter_key
             ).aggregate(**{ag_key: Sum(F("markup_cost") + F("cost"))})
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
 
@@ -1320,7 +1320,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 usage_start__gte=self.dh.this_month_start
             ).aggregate(**{ag_key: Sum(F("markup_cost") + F("cost"))})
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{group_by_key}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{group_by_key}]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
 
@@ -1352,12 +1352,12 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 OCIDatabaseSummaryP,
             ),
             (
-                "?filter[product_service]=Networking Gateways",  # noqa: E501
+                "?filter[product_service]=Networking Gateways",
                 OCICostView,
                 OCINetworkSummaryP,
             ),
             (
-                "?filter[product_service]=Networking Gateways&group_by[payer_tenant_id]=*",  # noqa: E501
+                "?filter[product_service]=Networking Gateways&group_by[payer_tenant_id]=*",
                 OCICostView,
                 OCINetworkSummaryP,
             ),
@@ -1370,7 +1370,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
                 handler = OCIReportQueryHandler(query_params)
                 self.assertEqual(handler.query_table, table)
 
-    def test_source_uuid_mapping(self):  # noqa: C901
+    def test_source_uuid_mapping(self):
         """Test source_uuid is mapped to the correct source."""
         # Find the correct expected source uuid:
         with tenant_context(self.tenant):
@@ -1406,7 +1406,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
             tenant = OCICostEntryLineItemDailySummary.objects.filter(usage_start__gte=self.dh.this_month_start).values(
                 "payer_tenant_id"
             )[0]
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[payer_tenant_id]={tenant}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[payer_tenant_id]={tenant}"
         query_params = self.mocked_query_params(url, OCIInstanceTypeView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1431,7 +1431,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         """Test that order of every other date matches the order of the `order_by` date."""
         # execute query
         yesterday = self.dh.yesterday.date()
-        url = f"?filter[limit]=10&filter[offset]=0&order_by[cost]=desc&order_by[date]={yesterday}&group_by[product_service]=*"  # noqa: E501
+        url = f"?filter[limit]=10&filter[offset]=0&order_by[cost]=desc&order_by[date]={yesterday}&group_by[product_service]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1491,7 +1491,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         yesterday = DateHelper().today.date()
         yesterday_month = yesterday - relativedelta(months=2)
 
-        url = f"?group_by[product_service]=*&order_by[cost]=desc&order_by[date]={yesterday_month}&end_date={yesterday}&start_date={yesterday_month}"  # noqa: E501
+        url = f"?group_by[product_service]=*&order_by[cost]=desc&order_by[date]={yesterday_month}&end_date={yesterday}&start_date={yesterday_month}"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1554,7 +1554,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
             if len(tag_dict.get("values")) > len(exclude_vals):
                 group_tag = tag_dict.get("key")
                 exclude_vals = tag_dict.get("values")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"
         query_params = self.mocked_query_params(url, OCICostView)
         handler = OCIReportQueryHandler(query_params)
         data = handler.execute_query().get("data")
@@ -1576,7 +1576,7 @@ class OCIReportQueryHandlerTest(IamTestCase):
         """Test that the exclude feature works for all options."""
         exclude_opts = OCIExcludeSerializer._opfields
         for ex_opt in exclude_opts:
-            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
             for view in [OCICostView, OCIStorageView, OCIInstanceTypeView]:
                 query_params = self.mocked_query_params(base_url, view)
                 handler = OCIReportQueryHandler(query_params)

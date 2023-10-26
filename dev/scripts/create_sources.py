@@ -10,7 +10,7 @@ KOKU_SOURCES_URL = f"http://{KOKU_API_HOST}:{KOKU_API_PORT}{KOKU_API_PATH_PREFIX
 KOKU_DEV_HEADER = os.getenv(
     "KOKU_DEV_HEADER",
     (
-        "eyJpZGVudGl0eSI6IHsiYWNjb3VudF9udW1iZXIiOiAiMTAwMDEiLCAidHlwZSI6ICJVc2VyIiwgInVzZXIiOiB7InVzZXJuYW1lIjogInVzZXJfZGV2IiwgImVtYWlsIjogInVzZXJfZGV2QGZvby5jb20iLCAiaXNfb3JnX2FkbWluIjogdHJ1ZX19LCAiZW50aXRsZW1lbnRzIjogeyJvcGVuc2hpZnQiOiB7ImlzX2VudGl0bGVkIjogdHJ1ZX19fQ=="  # noqa
+        "eyJpZGVudGl0eSI6IHsiYWNjb3VudF9udW1iZXIiOiAiMTAwMDEiLCAidHlwZSI6ICJVc2VyIiwgInVzZXIiOiB7InVzZXJuYW1lIjogInVzZXJfZGV2IiwgImVtYWlsIjogInVzZXJfZGV2QGZvby5jb20iLCAiaXNfb3JnX2FkbWluIjogdHJ1ZX19LCAiZW50aXRsZW1lbnRzIjogeyJvcGVuc2hpZnQiOiB7ImlzX2VudGl0bGVkIjogdHJ1ZX19fQ=="
     ),
 )
 
@@ -206,7 +206,7 @@ class SourcesDataGenerator:
         return response.get("id")
 
 
-def main():  # noqa
+def main():
     parser = create_parser()
     args = parser.parse_args()
     parameters = vars(args)
@@ -241,7 +241,7 @@ def main():  # noqa
         authentication_id = generator.create_aws_authentication(endpoint_id, "user@example.com", role_arn)
 
         print(
-            f"AWS Source Setup Successfully\n\tSource ID: {source_id}\n\tEndpoint ID: {endpoint_id}\n\tAuthentication ID: {authentication_id}"  # noqa
+            f"AWS Source Setup Successfully\n\tSource ID: {source_id}\n\tEndpoint ID: {endpoint_id}\n\tAuthentication ID: {authentication_id}"
         )
 
         if create_application:
@@ -289,7 +289,7 @@ def main():  # noqa
         tenant_id = parameters.get("tenant_id")
         authentication_id = generator.create_azure_authentication(endpoint_id, client_id, client_secret, tenant_id)
         print(
-            f"Azure Source Setup Successfully\n\tSource ID: {source_id}\n\tEndpoint ID: {endpoint_id}\n\tAuthentication ID: {authentication_id}"  # noqa
+            f"Azure Source Setup Successfully\n\tSource ID: {source_id}\n\tEndpoint ID: {endpoint_id}\n\tAuthentication ID: {authentication_id}"
         )
 
         if create_application:

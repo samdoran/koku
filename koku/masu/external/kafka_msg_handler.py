@@ -230,7 +230,7 @@ def _get_source_id(provider_uuid):
 
 
 # pylint: disable=too-many-locals
-def extract_payload(url, request_id, b64_identity, context={}):  # noqa: C901
+def extract_payload(url, request_id, b64_identity, context={}):
     """
     Extract OCP usage report payload into local directory structure.
 
@@ -459,7 +459,7 @@ def handle_message(kmsg):
         msg = f"Unable to extract payload, db closed. {type(error).__name__}: {error}"
         LOG.warning(log_json(request_id, msg=msg, context=context))
         raise KafkaMsgHandlerError(msg) from error
-    except Exception as error:  # noqa
+    except Exception as error:
         traceback.print_exc()
         msg = f"Unable to extract payload. Error: {type(error).__name__}: {error}"
         LOG.warning(log_json(request_id, msg=msg, context=context))

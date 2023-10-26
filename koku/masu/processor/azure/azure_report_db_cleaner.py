@@ -55,7 +55,7 @@ class AzureReportDBCleaner:
         )
 
         with AzureReportDBAccessor(self._schema) as accessor:
-            if (expired_date is None and provider_uuid is None) or (  # noqa: W504
+            if (expired_date is None and provider_uuid is None) or (
                 expired_date is not None and provider_uuid is not None
             ):
                 err = "This method must be called with either expired_date or provider_uuid"

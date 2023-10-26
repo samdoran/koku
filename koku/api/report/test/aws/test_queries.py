@@ -413,7 +413,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_by_service(self):
         """Test execute_query for current month on monthly breakdown by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -436,7 +436,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_by_filtered_service(self):
         """Test execute_query monthly breakdown by filtered service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=AmazonEC2"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=AmazonEC2"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -459,7 +459,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_query_by_partial_filtered_service(self):
         """Test execute_query monthly breakdown by filtered service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=eC2"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=eC2"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -482,7 +482,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_by_account(self):
         """Test execute_query for current month on monthly breakdown by account."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -505,7 +505,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_by_account_by_service(self):
         """Test execute_query for current month breakdown by account by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&group_by[service]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -529,7 +529,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_execute_query_curr_month_by_account_w_limit(self):
         """Test execute_query for current month on monthly breakdown by account with limit."""
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -552,7 +552,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_execute_query_curr_month_by_account_w_order(self):
         """Test execute_query for current month on monthly breakdown by account with asc order."""
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&order_by[cost]=asc"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&order_by[cost]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -581,7 +581,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_execute_query_curr_month_by_account_w_order_by_account_alias(self):
         """Test execute_query for current month on monthly breakdown by account with asc order."""
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]={self.account_alias}&order_by[account_alias]=asc"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]={self.account_alias}&order_by[account_alias]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -609,7 +609,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_curr_month_by_region(self):
         """Test execute_query for current month on monthly breakdown by region."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -633,7 +633,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_curr_month_by_filtered_region(self):
         """Test execute_query for current month on monthly breakdown by filtered region."""
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]={self.region}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[region]={self.region}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -656,7 +656,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_curr_month_by_avail_zone(self):
         """Test execute_query for current month on monthly breakdown by avail_zone."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[az]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[az]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -680,7 +680,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_curr_month_by_filtered_avail_zone(self):
         """Test execute_query for current month on monthly breakdown by filtered avail_zone."""
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[az]={self.availability_zone}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[az]={self.availability_zone}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -705,7 +705,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_filter_account(self):
         """Test execute_query for current month on monthly filtered by account."""
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={self.account_alias}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[account]={self.account_alias}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -724,7 +724,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_filter_service(self):
         """Test execute_query for current month on monthly filtered by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]=AmazonEC2"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[service]=AmazonEC2"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -744,7 +744,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_filter_region(self):
         """Test execute_query for current month on monthly filtered by region."""
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={self.region}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[region]={self.region}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -763,7 +763,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_filter_avail_zone(self):
         """Test execute_query for current month on monthly filtered by avail_zone."""
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[az]={self.availability_zone}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[az]={self.availability_zone}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -782,7 +782,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_current_month_exclude_service(self):
         """Test execute_query for current month on monthly excluded by service."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[service]=AmazonEC2"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&exclude[service]=AmazonEC2"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -929,7 +929,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_execute_query_current_month_filter_avail_zone_csv(self, mock_accept):
         """Test execute_query for current month on monthly filtered by avail_zone for csv."""
         mock_accept.return_value = "text/csv"
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[az]={self.availability_zone}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[az]={self.availability_zone}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -944,7 +944,7 @@ class AWSReportQueryTest(IamTestCase):
         """Test execute_query for current month on monthly by account with limt as csv."""
         mock_accept.return_value = "text/csv"
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&group_by[account]={self.account_alias}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&group_by[account]={self.account_alias}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -985,7 +985,7 @@ class AWSReportQueryTest(IamTestCase):
         expected_delta_value = Decimal(current_total - prev_total)
         expected_delta_percent = Decimal((current_total - prev_total) / prev_total * 100)
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]={self.account_alias}&delta=cost"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]={self.account_alias}&delta=cost"
         path = reverse("reports-aws-costs")
         query_params = self.mocked_query_params(url, AWSCostView, path)
         handler = AWSReportQueryHandler(query_params)
@@ -1030,7 +1030,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_orderby_delta(self):
         """Test execute_query with ordering by delta ascending."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[delta]=asc&group_by[account]=*&delta=cost"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&order_by[delta]=asc&group_by[account]=*&delta=cost"
         path = reverse("reports-openshift-aws-costs")
         query_params = self.mocked_query_params(url, AWSCostView, path)
         handler = AWSReportQueryHandler(query_params)
@@ -1051,7 +1051,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_with_account_alias(self):
         """Test execute_query when account alias is avaiable."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1064,7 +1064,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_execute_query_orderby_alias(self):
         """Test execute_query when account alias is avaiable."""
         # execute query
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&order_by[account_alias]=asc"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*&order_by[account_alias]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1106,7 +1106,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_rank_list(self, mock_is_aws):
         """Test rank list limit with account alias."""
         mock_is_aws.return_value = True
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         ranks = [
@@ -1263,7 +1263,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_rank_list_no_account(self):
         """Test rank list limit with out account alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=2&group_by[service]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
 
@@ -1414,7 +1414,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_rank_list_with_offset(self):
         """Test rank list limit and offset with account alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&filter[offset]=1&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         ranks = [
@@ -1533,7 +1533,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_rank_list_zerofill_account(self, mock_is_aws):
         """Test rank list limit with account alias, ensuring we zero-fill missing ranks and populate account_alias."""
         mock_is_aws.return_value = True
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&filter[limit]=10&group_by[account]=*&order_by[account_alias]=asc"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&filter[limit]=10&group_by[account]=*&order_by[account_alias]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         ranks = [
@@ -2067,7 +2067,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_rank_list_big_limit(self):
         """Test rank list limit with account alias, ensuring we return results with limited data."""
-        params = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&filter[limit]=3"  # noqa: E501
+        params = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&filter[limit]=3"
         query_params = self.mocked_query_params(
             params, AWSInstanceTypeView, path="api/cost-management/v1/reports/aws/instance-types/"
         )
@@ -2191,7 +2191,7 @@ class AWSReportQueryTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
         """
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[account]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -2214,7 +2214,7 @@ class AWSReportQueryTest(IamTestCase):
         Query for instance_types, validating that cost totals are present.
         """
 
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[instance_type]=*"
         query_params = self.mocked_query_params(url, AWSInstanceTypeView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -2238,7 +2238,7 @@ class AWSReportQueryTest(IamTestCase):
 
         Query for storage, validating that cost totals are present.
         """
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[service]=*"
         query_params = self.mocked_query_params(url, AWSStorageView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -2264,7 +2264,7 @@ class AWSReportQueryTest(IamTestCase):
         """Test that order_by returns properly sorted data."""
         today = datetime.utcnow()
         yesterday = today - timedelta(days=1)
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
 
@@ -2305,7 +2305,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_with_wildcard_tag_filter(self):
         """Test that data is filtered to include entries with tag key."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, AWSTagView)
         handler = AWSTagQueryHandler(query_params)
         tag_keys = handler.get_tag_keys(filters=False)
@@ -2318,7 +2318,7 @@ class AWSReportQueryTest(IamTestCase):
                 usage_start__gte=self.dh.this_month_start, tags__has_key=filter_key
             ).aggregate(**{"cost": Sum(F("unblended_cost") + F("markup_cost"))})
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[tag:{filter_key}]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         data = handler.execute_query()
@@ -2328,7 +2328,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_with_tag_group_by(self):
         """Test that data is grouped by tag key."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, AWSTagView)
         handler = AWSTagQueryHandler(query_params)
         tag_keys = handler.get_tag_keys(filters=False)
@@ -2341,7 +2341,7 @@ class AWSReportQueryTest(IamTestCase):
                 usage_start__gte=self.dh.this_month_start
             ).aggregate(**{"cost": Sum(F("unblended_cost") + F("markup_cost"))})
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{group_by_key}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{group_by_key}]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
 
@@ -2356,7 +2356,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_return_others_with_tag_group_by(self):
         """Test that data is grouped by tag key."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, AWSTagView)
         handler = AWSTagQueryHandler(query_params)
         tag_keys = handler.get_tag_keys(filters=False)
@@ -2377,7 +2377,7 @@ class AWSReportQueryTest(IamTestCase):
                 .aggregate(**{totals_key: Sum(F("unblended_cost") + F("markup_cost"))})
             )
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[or:tag:{group_by_key}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[or:tag:{group_by_key}]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
 
@@ -2392,7 +2392,7 @@ class AWSReportQueryTest(IamTestCase):
 
     def test_execute_query_with_tag_filter(self):
         """Test that data is filtered by tag key."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, AWSTagView)
         handler = AWSTagQueryHandler(query_params)
         tag_keys = handler.get_tag_keys(filters=False)
@@ -2416,7 +2416,7 @@ class AWSReportQueryTest(IamTestCase):
                 .aggregate(**{"cost": Sum(F("unblended_cost") + F("markup_cost"))})
             )
 
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{filter_key}]={filter_value}"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[tag:{filter_key}]={filter_value}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         data = handler.execute_query()
@@ -2568,7 +2568,7 @@ class AWSReportQueryTest(IamTestCase):
         self.account_alias = all_accts[0]
 
         with tenant_context(self.tenant):
-            org_group_by_url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&cost_type=unblended_cost&filter[org_unit_id]=OU_001&group_by[account]={self.account_alias}"  # noqa: E501
+            org_group_by_url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&cost_type=unblended_cost&filter[org_unit_id]=OU_001&group_by[account]={self.account_alias}"
             query_params = self.mocked_query_params(org_group_by_url, AWSCostView)
             handler = AWSReportQueryHandler(query_params)
             org_data = handler.execute_query()
@@ -2630,7 +2630,7 @@ class AWSReportQueryTest(IamTestCase):
         sub_org_units.append(self.organizational_unit)
 
         with tenant_context(self.tenant):
-            org_group_by_url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&cost_type=unblended_cost&filter[org_unit_id]=OU_001&group_by[account]={self.account_alias}"  # noqa: E501
+            org_group_by_url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&cost_type=unblended_cost&filter[org_unit_id]=OU_001&group_by[account]={self.account_alias}"
             self.test_read_access = {
                 "aws.account": {"read": [self.account_alias]},
                 "aws.organizational_unit": {"read": [self.organizational_unit]},
@@ -2814,7 +2814,7 @@ class AWSReportQueryTest(IamTestCase):
         """Test execute_query with limit/offset/order_by for aws account alias."""
         # execute query
         mock_is_aws.return_value = True
-        url = "?filter[limit]=2&filter[offset]=0&group_by[account]=*&order_by[account_alias]=asc"  # noqa: E501
+        url = "?filter[limit]=2&filter[offset]=0&group_by[account]=*&order_by[account_alias]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -2832,7 +2832,7 @@ class AWSReportQueryTest(IamTestCase):
     def test_limit_offset_order_by_group_by_ranks(self):
         """Test execute_query with limit/offset/order_by for aws cost."""
         # execute query
-        url = "?filter[limit]=2&filter[offset]=0&group_by[account]=*&order_by[cost]=asc"  # noqa: E501
+        url = "?filter[limit]=2&filter[offset]=0&group_by[account]=*&order_by[cost]=asc"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -2875,7 +2875,7 @@ class AWSReportQueryTest(IamTestCase):
         }
         for group_by, table in group_bys.items():
             with self.subTest(test=group_by):
-                url = f"?filter[limit]=10&filter[offset]=0&order_by[cost]=desc&order_by[date]={yesterday}&group_by[{group_by}]=*"  # noqa: E501
+                url = f"?filter[limit]=10&filter[offset]=0&order_by[cost]=desc&order_by[date]={yesterday}&group_by[{group_by}]=*"
                 query_params = self.mocked_query_params(url, AWSCostView)
                 handler = AWSReportQueryHandler(query_params)
                 query_output = handler.execute_query()
@@ -2957,7 +2957,7 @@ class AWSReportQueryTest(IamTestCase):
                 expected_total = overall_total - filtered_total
                 # Test exclude
                 exclude_url = (
-                    f"?filter[{exclude_opt}]={parent_org_unit}&exclude[{exclude_opt}]={child_org_unit}"  # noqa: E501
+                    f"?filter[{exclude_opt}]={parent_org_unit}&exclude[{exclude_opt}]={child_org_unit}"
                 )
                 query_params = self.mocked_query_params(exclude_url, view)
                 handler = AWSReportQueryHandler(query_params)
@@ -2980,14 +2980,14 @@ class AWSReportQueryLogicalAndTest(IamTestCase):
         """Test prefixed logical AND."""
         data_to_test = {
             "1": {
-                "url": "?group_by[and:account]=a&group_by[and:account]=b&filter[time_scope_value]=-1&filter[time_scope_units]=month"  # noqa
+                "url": "?group_by[and:account]=a&group_by[and:account]=b&filter[time_scope_value]=-1&filter[time_scope_units]=month"
             },
             "2": {"url": "?group_by[account]=ab&filter[time_scope_value]=-1&filter[time_scope_units]=month"},
             "3": {
-                "url": "?group_by[and:account]=a&group_by[and:account]=b&group_by[and:account]=c&filter[time_scope_value]=-1&filter[time_scope_units]=month"  # noqa
+                "url": "?group_by[and:account]=a&group_by[and:account]=b&group_by[and:account]=c&filter[time_scope_value]=-1&filter[time_scope_units]=month"
             },
             "4": {
-                "url": "?group_by[account]=a&group_by[account]=b&filter[time_scope_value]=-1&filter[time_scope_units]=month"  # noqa
+                "url": "?group_by[account]=a&group_by[account]=b&filter[time_scope_value]=-1&filter[time_scope_units]=month"
             },
         }
 
@@ -3083,7 +3083,7 @@ class AWSQueryHandlerTest(IamTestCase):
 
     def test_filter_to_group_by_3(self):
         """Test group_by[service]=something AND group_by[service]=*."""
-        url = "?group_by[region]=*&filter[region]=eu-west-3&group_by[service]=AmazonEC2&group_by[service]=*&filter[service]=AmazonEC2"  # noqa
+        url = "?group_by[region]=*&filter[region]=eu-west-3&group_by[service]=AmazonEC2&group_by[service]=*&filter[service]=AmazonEC2"
         query_params = self.mocked_query_params(url, AWSInstanceTypeView)
         handler = AWSReportQueryHandler(query_params)
         query_params = handler.filter_to_order_by(query_params)
@@ -3120,7 +3120,7 @@ class AWSQueryHandlerTest(IamTestCase):
         self.assertTrue(region_1_exists)
         self.assertTrue(region_2_exists)
 
-    def test_source_uuid_mapping(self):  # noqa: C901
+    def test_source_uuid_mapping(self):
         """Test source_uuid is mapped to the correct source."""
         with tenant_context(self.tenant):
             aws_uuids = AWSCostEntryLineItemDailySummary.objects.distinct().values_list("source_uuid", flat=True)
@@ -3190,12 +3190,12 @@ class AWSQueryHandlerTest(IamTestCase):
                 AWSDatabaseSummaryP,
             ),
             (
-                "?filter[service]=AmazonVPC,AmazonCloudFront,AmazonRoute53,AmazonAPIGateway",  # noqa: E501
+                "?filter[service]=AmazonVPC,AmazonCloudFront,AmazonRoute53,AmazonAPIGateway",
                 AWSCostView,
                 AWSNetworkSummaryP,
             ),
             (
-                "?filter[service]=AmazonVPC,AmazonCloudFront,AmazonRoute53,AmazonAPIGateway&group_by[account]=*",  # noqa: E501
+                "?filter[service]=AmazonVPC,AmazonCloudFront,AmazonRoute53,AmazonAPIGateway&group_by[account]=*",
                 AWSCostView,
                 AWSNetworkSummaryP,
             ),
@@ -3214,7 +3214,7 @@ class AWSQueryHandlerTest(IamTestCase):
         yesterday = self.dh.yesterday.date()
         yesterday_month = self.dh.yesterday - relativedelta(months=2)
 
-        url = f"?group_by[account]=*&order_by[cost]=desc&order_by[date]={yesterday_month.date()}&end_date={yesterday}&start_date={yesterday_month.date()}"  # noqa: E501
+        url = f"?group_by[account]=*&order_by[cost]=desc&order_by[date]={yesterday_month.date()}&end_date={yesterday}&start_date={yesterday_month.date()}"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -3273,7 +3273,7 @@ class AWSQueryHandlerTest(IamTestCase):
             if len(tag_dict.get("values")) > len(exclude_vals):
                 group_tag = tag_dict.get("key")
                 exclude_vals = tag_dict.get("values")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"
         query_params = self.mocked_query_params(url, AWSCostView)
         handler = AWSReportQueryHandler(query_params)
         data = handler.execute_query().get("data")
@@ -3296,7 +3296,7 @@ class AWSQueryHandlerTest(IamTestCase):
         exclude_opts = list(AWSExcludeSerializer._opfields)
         exclude_opts.remove("org_unit_id")
         for ex_opt in exclude_opts:
-            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
             for view in [AWSCostView, AWSStorageView, AWSInstanceTypeView]:
                 query_params = self.mocked_query_params(base_url, view)
                 handler = AWSReportQueryHandler(query_params)

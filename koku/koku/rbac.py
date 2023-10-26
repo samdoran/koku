@@ -117,7 +117,7 @@ def _update_access_obj(access, res_access, resource_list):
     return res_access
 
 
-def _apply_access(access):  # noqa: C901
+def _apply_access(access):
     """Apply access to managed resources."""
     res_access = {}
     resources = []
@@ -182,7 +182,7 @@ class RbacService:
             PATH: ENVIRONMENT.get_value("RBAC_SERVICE_PATH", default="/r/insights/platform/rbac/v1/access/"),
         }
 
-    def _request_user_access(self, url, headers):  # noqa: C901
+    def _request_user_access(self, url, headers):
         """Send request to RBAC service and handle pagination case."""
         access = []
         try:

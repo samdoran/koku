@@ -313,7 +313,7 @@ class IdentityHeaderMiddleware(MiddlewareMixin):
         access = self.rbac.get_access_for_user(user)
         return access
 
-    def process_request(self, request):  # noqa: C901
+    def process_request(self, request):
         """Process request for csrf checks.
         Args:
             request (object): The request object
@@ -460,7 +460,7 @@ class IdentityHeaderMiddleware(MiddlewareMixin):
 class RequestTimingMiddleware(MiddlewareMixin):
     """A class to add total time taken to a request/response."""
 
-    def process_request(self, request):  # noqa: C901
+    def process_request(self, request):
         """Process request to add start time.
         Args:
             request (object): The request object

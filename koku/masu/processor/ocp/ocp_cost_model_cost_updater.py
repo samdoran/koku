@@ -247,7 +247,7 @@ class OCPCostModelCostUpdater(OCPCloudUpdaterBase):
         except OCPCostModelCostUpdaterError as error:
             LOG.error(log_json(msg="unable to update monthly costs"), exc_info=error)
 
-    def _update_monthly_tag_based_cost(self, start_date, end_date):  # noqa: C901
+    def _update_monthly_tag_based_cost(self, start_date, end_date):
         """Update the monthly cost for a period of time based on tag rates."""
         try:
             with OCPReportDBAccessor(self._schema) as report_accessor:

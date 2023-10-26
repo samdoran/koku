@@ -84,7 +84,7 @@ class AWSTagQueryHandlerTest(IamTestCase):
 
     def test_execute_query_for_account(self):
         """Test that the execute query runs properly with account query."""
-        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={self.fake.ean8()}"  # noqa: E501
+        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={self.fake.ean8()}"
         query_params = self.mocked_query_params(url, AWSTagView)
         handler = AWSTagQueryHandler(query_params)
         query_output = handler.execute_query()

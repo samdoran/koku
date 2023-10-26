@@ -135,7 +135,7 @@ class OCPCloudParquetReportSummaryUpdater(PartitionHandlerMixin, OCPCloudUpdater
                     }
                     LOG.info(
                         log_json(
-                            msg=f"no matching report periods available for cluster - removing from OCP on {infra_map[ocp_provider_uuid][1]} summary list",  # noqa: E501
+                            msg=f"no matching report periods available for cluster - removing from OCP on {infra_map[ocp_provider_uuid][1]} summary list",
                             context=ctx,
                         )
                     )

@@ -254,7 +254,7 @@ class FilterSerializer(BaseSerializer):
 
         if time_scope_units and time_scope_value:
             msg = "Valid values are {} when time_scope_units is {}"
-            if time_scope_units == "day" and time_scope_value in ("-1", "-2", "-3"):  # noqa: W504
+            if time_scope_units == "day" and time_scope_value in ("-1", "-2", "-3"):
                 valid_values = ["-10", "-30", "-90"]
                 valid_vals = ", ".join(valid_values)
                 error = {"time_scope_value": msg.format(valid_vals, "day")}
@@ -264,7 +264,7 @@ class FilterSerializer(BaseSerializer):
                 valid_vals = ", ".join(valid_values)
                 error = {"resolution": msg.format(valid_vals, "day")}
                 raise serializers.ValidationError(error)
-            if time_scope_units == "month" and time_scope_value in ("-10", "-30", "-90"):  # noqa: W504
+            if time_scope_units == "month" and time_scope_value in ("-10", "-30", "-90"):
                 valid_values = ["-1", "-2", "-3"]
                 valid_vals = ", ".join(valid_values)
                 error = {"time_scope_value": msg.format(valid_vals, "month")}
@@ -484,7 +484,7 @@ class ParamSerializer(BaseSerializer):
         validate_field(self, "group_by", self.GROUP_BY_SERIALIZER, value, tag_keys=self.tag_keys)
         return value
 
-    def validate_order_by(self, value):  # noqa: C901
+    def validate_order_by(self, value):
         """Validate incoming order_by data.
 
         Args:

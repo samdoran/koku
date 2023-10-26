@@ -126,7 +126,7 @@ class GCPProviderTestCase(TestCase):
         )
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}
@@ -145,7 +145,7 @@ class GCPProviderTestCase(TestCase):
         """Test that cost_usage_source_is_reachable permmision error."""
         missing_permissions = [REQUIRED_IAM_PERMISSIONS[0]]
         mock_auth.return_value = (MagicMock(), MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             missing_permissions
         )
         billing_source_param = {"dataset": FAKE.word(), "table_id": FAKE.word()}
@@ -192,7 +192,7 @@ class GCPProviderTestCase(TestCase):
         )
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}
@@ -213,7 +213,7 @@ class GCPProviderTestCase(TestCase):
         mock_bigquery.Client.return_value = MockBigQueryClient("test_project", "test_dataset", ["abc_1234"])
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}
@@ -230,7 +230,7 @@ class GCPProviderTestCase(TestCase):
         mock_bigquery.Client.side_effect = NotFound(message="Not Found")
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}
@@ -247,7 +247,7 @@ class GCPProviderTestCase(TestCase):
         mock_bigquery.Client.side_effect = BadRequest(message="Incorrect dataset format")
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}
@@ -334,7 +334,7 @@ class GCPProviderTestCase(TestCase):
         mock_bigquery.Client.side_effect = ValueError()
         gcp_creds = MagicMock()
         mock_auth.return_value = (gcp_creds, MagicMock())
-        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (  # noqa: E501
+        mock_discovery.build.return_value.projects.return_value.testIamPermissions.return_value.execute.return_value.get.return_value = (
             REQUIRED_IAM_PERMISSIONS
         )
         billing_source_param = {"dataset": FAKE.word()}

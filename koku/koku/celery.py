@@ -16,7 +16,7 @@ from croniter import croniter
 from django.conf import settings
 from kombu.exceptions import OperationalError
 
-from koku import sentry  # noqa: F401
+from koku import sentry
 from koku.env import ENVIRONMENT
 from koku.probe_server import ProbeResponse
 from koku.probe_server import ProbeServer
@@ -50,7 +50,7 @@ class LoggingCelery(Celery):
 class WorkerProbeServer(ProbeServer):  # pragma: no cover
     """HTTP server for liveness/readiness probes."""
 
-    _collector = lambda *args: None  # noqa: E731
+    _collector = lambda *args: None
     _last_query_time = datetime.min
 
     @classmethod
@@ -230,7 +230,7 @@ def wait_for_migrations(sender, instance, **kwargs):  # pragma: no cover
 
     # This is a special case because check_migrations() returns three values
     # True means migrations are up-to-date
-    while check_migrations() != True:  # noqa
+    while check_migrations() != True:
         LOG.warning("Migrations not done. Sleeping")
         time.sleep(5)
 

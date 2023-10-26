@@ -142,7 +142,7 @@ class AzureReportDBAccessorTest(MasuTestCase):
 
                     sum_project_cost = project_table.objects.filter(namespace=namespace).aggregate(
                         Sum("pretax_cost")
-                    )[  # noqa: E501
+                    )[
                         "pretax_cost__sum"
                     ]
                     self.assertNotEqual(sum_cost, 0)

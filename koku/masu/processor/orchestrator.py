@@ -122,7 +122,7 @@ class Orchestrator:
 
         return sorted(DateAccessor().get_billing_months(number_of_months), reverse=True)
 
-    def start_manifest_processing(  # noqa: C901
+    def start_manifest_processing(
         self, customer_name, credentials, data_source, provider_type, schema_name, provider_uuid, report_month
     ):
         """

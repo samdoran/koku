@@ -221,7 +221,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_get_cluster_capacity_monthly_resolution_group_by_cluster(self):
         """Test that cluster capacity returns capacity by cluster."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[cluster]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&group_by[cluster]=*"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
         query_data = handler.execute_query()
@@ -846,7 +846,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
             filter_collection, handler._mapper.tag_column, filter_keys, TAG_PREFIX
         )
 
-        expected = f"""<class 'api.query_filter.QueryFilterCollection'>: (AND: ('pod_labels__{filter_key}__icontains', '{filter_value}')), (AND: ('pod_labels__{group_by_key}__icontains', '{group_by_value}')), """  # noqa: E501
+        expected = f"""<class 'api.query_filter.QueryFilterCollection'>: (AND: ('pod_labels__{filter_key}__icontains', '{filter_value}')), (AND: ('pod_labels__{group_by_key}__icontains', '{group_by_value}')), """
 
         self.assertEqual(repr(filter_collection), expected)
 
@@ -885,7 +885,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_filter_by_infrastructure_ocp_on_aws(self):
         """Test that filter by infrastructure for ocp on aws."""
-        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[infrastructures]=aws"  # noqa: E501
+        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[infrastructures]=aws"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
         query_data = handler.execute_query()
@@ -899,7 +899,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_filter_by_infrastructure_ocp_on_azure(self):
         """Test that filter by infrastructure for ocp on azure."""
-        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[infrastructures]=azure"  # noqa: E501
+        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[infrastructures]=azure"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
         query_data = handler.execute_query()
@@ -914,7 +914,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
     def test_filter_by_infrastructure_ocp(self):
         """Test that filter by infrastructure for ocp not on aws."""
 
-        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[cluster]=OCP-On-Azure&filter[infrastructures]=aws"  # noqa: E501
+        url = "?filter[resolution]=monthly&filter[time_scope_value]=-1&filter[time_scope_units]=month&filter[cluster]=OCP-On-Azure&filter[infrastructures]=aws"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
         query_data = handler.execute_query()
@@ -927,7 +927,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_order_by_null_values(self):
         """Test that order_by returns properly sorted data with null data."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
 
@@ -950,7 +950,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_ocp_cpu_query_group_by_cluster(self):
         """Test that group by cluster includes cluster and cluster_alias."""
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=3&group_by[cluster]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=3&group_by[cluster]=*"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
 
@@ -971,7 +971,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
     def test_other_clusters(self, mock_is_openshift):
         """Test that group by cluster includes cluster and cluster_alias."""
         mock_is_openshift.return_value = True
-        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&group_by[cluster]=*"  # noqa: E501
+        url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=1&group_by[cluster]=*"
         query_params = self.mocked_query_params(url, OCPCpuView)
         handler = OCPReportQueryHandler(query_params)
 
@@ -1000,7 +1000,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
             ("node", "cluster"),
             ("node", "project"),
         ]
-        base_url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=3"  # noqa: E501
+        base_url = "?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=monthly&filter[limit]=3"
         tolerance = 1
         for group_by in group_by_list:
             sub_url = "&group_by[%s]=*&group_by[%s]=*" % group_by
@@ -1032,7 +1032,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
                 self.assertIsNotNone(result)
                 self.assertLessEqual(abs(expected - result), tolerance)
 
-    def test_source_uuid_mapping(self):  # noqa: C901
+    def test_source_uuid_mapping(self):
         """Test source_uuid is mapped to the correct source."""
         endpoints = [OCPCostView, OCPCpuView, OCPVolumeView, OCPMemoryView]
         with tenant_context(self.tenant):
@@ -1061,7 +1061,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_group_by_project_w_limit(self):
         """COST-1252: Test that grouping by project with limit works as expected."""
-        url = "?group_by[project]=*&order_by[project]=asc&filter[limit]=2"  # noqa: E501
+        url = "?group_by[project]=*&order_by[project]=asc&filter[limit]=2"
         query_params = self.mocked_query_params(url, OCPCostView)
         handler = OCPReportQueryHandler(query_params)
         current_totals = self.get_totals_costs_by_time_scope(handler, self.ten_day_filter)
@@ -1077,7 +1077,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_group_by_project_overhead_distributed(self):
         """COST-1252: Test that grouping by project with limit works as expected."""
-        url = "?group_by[project]=*&order_by[project]=asc&filter[limit]=2"  # noqa: E501
+        url = "?group_by[project]=*&order_by[project]=asc&filter[limit]=2"
         with tenant_context(self.tenant):
             OCPCostSummaryByProjectP.objects.update(cost_model_rate_type="platform_distributed")
         query_params = self.mocked_query_params(url, OCPCostView)
@@ -1229,7 +1229,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
         # The data will still return data because other dates will still generate data.
         yesterday = DateHelper().today.date()
         yesterday_month = yesterday - relativedelta(months=2)
-        url = f"?group_by[project]=*&order_by[cost]=desc&order_by[date]={yesterday_month}&end_date={yesterday}&start_date={yesterday_month}"  # noqa: E501
+        url = f"?group_by[project]=*&order_by[cost]=desc&order_by[date]={yesterday_month}&end_date={yesterday}&start_date={yesterday_month}"
         query_params = self.mocked_query_params(url, OCPCostView)
         handler = OCPReportQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -1372,7 +1372,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
             if len(tag_dict.get("values")) > len(exclude_vals):
                 group_tag = tag_dict.get("key")
                 exclude_vals = tag_dict.get("values")
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"
         query_params = self.mocked_query_params(url, OCPCostView)
         handler = OCPReportQueryHandler(query_params)
         data = handler.execute_query().get("data")
@@ -1400,7 +1400,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
 
     def test_multi_exclude_persistentvolumeclaim_functionality(self):
         """Test that the exclude feature works for all options."""
-        base_url = "?group_by[persistentvolumeclaim]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+        base_url = "?group_by[persistentvolumeclaim]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
         query_params = self.mocked_query_params(base_url, OCPVolumeView)
         handler = OCPReportQueryHandler(query_params)
         overall_output = handler.execute_query()
@@ -1437,7 +1437,7 @@ class OCPReportQueryHandlerTest(IamTestCase):
         remove_from_test = {"infrastructures", "category", "persistentvolumeclaim"}
         exclude_opts = set(OCPExcludeSerializer._opfields).difference(remove_from_test)
         for ex_opt in exclude_opts:
-            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
             for view in [OCPVolumeView, OCPCostView, OCPCpuView, OCPMemoryView]:
                 query_params = self.mocked_query_params(base_url, view)
                 handler = OCPReportQueryHandler(query_params)

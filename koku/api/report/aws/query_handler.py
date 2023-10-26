@@ -115,7 +115,7 @@ class AWSReportQueryHandler(ReportQueryHandler):
                 return True
         return False
 
-    def format_sub_org_results(self, query_data_results, query_data, sub_orgs_dict):  # noqa: C901
+    def format_sub_org_results(self, query_data_results, query_data, sub_orgs_dict):
         """
         Add the sub_orgs into the overall results if grouping by org unit.
 
@@ -184,7 +184,7 @@ class AWSReportQueryHandler(ReportQueryHandler):
 
         return query_data
 
-    def execute_query(self):  # noqa: C901
+    def execute_query(self):
         """Execute each query needed to return the results.
 
         If grouping by org_unit_id, a query will be executed to
@@ -388,7 +388,7 @@ class AWSReportQueryHandler(ReportQueryHandler):
                 filt["field"] = "organizational_unit__org_unit_id"
         super().set_access_filters(access, filt, filters)
 
-    def total_sum(self, sum1, sum2):  # noqa: C901
+    def total_sum(self, sum1, sum2):
         """
         Given two sums, add the values of identical keys.
         Args:
@@ -406,7 +406,7 @@ class AWSReportQueryHandler(ReportQueryHandler):
                     sum2[expected_key] = self.total_sum(sum1.get(expected_key), sum2.get(expected_key))
         return sum2
 
-    def execute_individual_query(self, org_unit_applied=False):  # noqa: C901
+    def execute_individual_query(self, org_unit_applied=False):
         """Execute query and return provided data.
 
         Returns:

@@ -55,7 +55,7 @@ class Command(BaseCommand):
         timeout = 5
         # This is a special case because check_migrations() returns three values
         # True means migrations are up-to-date
-        while check_migrations() != True:  # noqa
+        while check_migrations() != True:
             LOG.warning(f"Migrations not done. Sleeping {timeout} seconds.")
             time.sleep(timeout)
 

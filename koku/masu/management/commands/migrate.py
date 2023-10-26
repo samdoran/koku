@@ -20,4 +20,4 @@ class Command(migrate.Command):
 
 
 if django_is_in_test_mode():
-    Command = MigrateSchemasCommand  # noqa: F811
+    Command = MigrateSchemasCommand

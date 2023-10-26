@@ -104,8 +104,8 @@ class ReportDownloaderBaseTest(MasuTestCase):
         side_effect_error = IntegrityError(
             """insert or update on table "reporting_awscostentrybill" violates foreign key constraint "reporting_awscostent_provider_id_a08725b3_fk_api_provi"
 DETAIL:  Key (provider_id)=(fbe0593a-1b83-4182-b23e-08cd190ed939) is not present in table "api_provider".
-"""  # noqa
-        )  # noqa
+"""
+        )
         with patch.object(ReportManifestDBAccessor, "add", side_effect=side_effect_error):
             downloader = ReportDownloaderBase(provider_uuid=self.unkown_test_provider_uuid, cache_key=self.cache_key)
             with self.assertRaises(ReportDownloaderError):

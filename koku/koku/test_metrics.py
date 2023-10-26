@@ -20,7 +20,6 @@ from koku.metrics import REGISTRY
 FAKE = Faker()
 
 
-# noqa: W0212,E1101
 class DatabaseStatusTest(IamTestCase):
     """Test DatabaseStatus object."""
 

@@ -88,7 +88,7 @@ class GCPTagQueryHandlerTest(IamTestCase):
             obj = GCPCostEntryLineItemDailySummary.objects.values("account_id").first()
             account = obj.get("account_id")
 
-        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={account}"  # noqa: E501
+        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={account}"
         query_params = self.mocked_query_params(url, GCPTagView)
         handler = GCPTagQueryHandler(query_params)
         query_output = handler.execute_query()

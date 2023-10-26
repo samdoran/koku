@@ -246,7 +246,7 @@ def data_exists(conn, schema_name, partable_name):
     return res["data_exists"]
 
 
-def process_ocpazure_matviews(conn, schemata, matviews):  # noqa
+def process_ocpazure_matviews(conn, schemata, matviews):
     tot = len(schemata)
     for i, schema in enumerate(schemata, start=1):
         LOG.info(f"***** Running copy against schema {schema} ({i} / {tot}) *****")

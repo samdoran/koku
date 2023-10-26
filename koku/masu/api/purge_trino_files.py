@@ -29,7 +29,7 @@ LOG = logging.getLogger(__name__)
 @api_view(http_method_names=["GET", "DELETE"])
 @permission_classes((AllowAny,))
 @renderer_classes(tuple(api_settings.DEFAULT_RENDERER_CLASSES))
-def purge_trino_files(request):  # noqa: C901
+def purge_trino_files(request):
     """
     This endpoint deletes the parquet & csv files in s3.
     Required Params:

@@ -171,7 +171,7 @@ class TagQueryHandler(QueryHandler):
                 category_filters.add(namespace_filter)
         return category_filters.compose(logical_operator="or")
 
-    def _get_filter(self, delta=False):  # noqa: C901
+    def _get_filter(self, delta=False):
         """Create dictionary for filter parameters.
 
         Args:

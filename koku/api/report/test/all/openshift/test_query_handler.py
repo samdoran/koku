@@ -86,7 +86,7 @@ class OCPAllQueryHandlerTest(IamTestCase):
         handler = OCPAllReportQueryHandler(query_params)
         self.assertTrue(handler.query_table == DATABASE_SUMMARY)
 
-    def disable_test_source_uuid_mapping(self):  # noqa: C901
+    def disable_test_source_uuid_mapping(self):
         """Test source_uuid is mapped to the correct source."""
         endpoints = [OCPAllCostView, OCPAllInstanceTypeView, OCPAllStorageView]
         with tenant_context(self.tenant):
@@ -228,7 +228,7 @@ class OCPAllQueryHandlerTest(IamTestCase):
                 group_tag = tag_dict.get("key")
                 exclude_vals = tag_dict.get("values")
         self.assertNotEqual(len(exclude_vals), 0)
-        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"  # noqa: E501
+        url = f"?filter[time_scope_units]=month&filter[time_scope_value]=-1&filter[resolution]=daily&group_by[tag:{group_tag}]=*"
         query_params = self.mocked_query_params(url, OCPAllCostView)
         handler = OCPAllReportQueryHandler(query_params)
         data = handler.execute_query().get("data")
@@ -255,7 +255,7 @@ class OCPAllQueryHandlerTest(IamTestCase):
         exclude_opts.remove("instance_type")
         exclude_opts.remove("storage_type")
         for ex_opt in exclude_opts:
-            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"  # noqa: E501
+            base_url = f"?group_by[{ex_opt}]=*&filter[time_scope_units]=month&filter[resolution]=monthly&filter[time_scope_value]=-1"
             for view in [OCPAllCostView, OCPAllStorageView, OCPAllInstanceTypeView]:
                 query_params = self.mocked_query_params(base_url, view)
                 handler = OCPAllReportQueryHandler(query_params)

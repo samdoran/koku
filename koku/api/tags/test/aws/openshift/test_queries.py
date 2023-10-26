@@ -35,7 +35,7 @@ class OCPAWSTagQueryHandlerTest(IamTestCase):
 
     def test_10_day(self):
         """Test that the execute_query() succeeds with 10 day parameters."""
-        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily"  # noqa: E501
+        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily"
         query_params = self.mocked_query_params(url, OCPAWSTagView)
         handler = OCPAWSTagQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -45,7 +45,7 @@ class OCPAWSTagQueryHandlerTest(IamTestCase):
 
     def test_30_day(self):
         """Test that execute_query() succeeds with 30 day parameters."""
-        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-30&filter[resolution]=daily"  # noqa: E501
+        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-30&filter[resolution]=daily"
         query_params = self.mocked_query_params(url, OCPAWSTagView)
         handler = OCPAWSTagQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -55,7 +55,7 @@ class OCPAWSTagQueryHandlerTest(IamTestCase):
 
     def test_10_day_only_keys(self):
         """Test that execute_query() succeeds with 10 day parameters, keys-only."""
-        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&key_only=True"  # noqa: E501
+        url = "?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&key_only=True"
         query_params = self.mocked_query_params(url, OCPAWSTagView)
         handler = OCPAWSTagQueryHandler(query_params)
         query_output = handler.execute_query()
@@ -85,7 +85,7 @@ class OCPAWSTagQueryHandlerTest(IamTestCase):
 
     def test_specific_account(self):
         """Test that execute_query() succeeds with account parameter."""
-        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={str(self.fake.ean8())}"  # noqa: E501
+        url = f"?filter[time_scope_units]=day&filter[time_scope_value]=-10&filter[resolution]=daily&filter[account]={str(self.fake.ean8())}"
         query_params = self.mocked_query_params(url, OCPAWSTagView)
         handler = OCPAWSTagQueryHandler(query_params)
         query_output = handler.execute_query()

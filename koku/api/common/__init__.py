@@ -1,4 +1,3 @@
-# noqa
 from uuid import UUID
 
 from django.utils.translation import ugettext as _

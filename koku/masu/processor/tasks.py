@@ -153,8 +153,8 @@ def record_report_status(manifest_id, file_name, tracing_id, context={}):
     return already_processed
 
 
-@celery_app.task(name="masu.processor.tasks.get_report_files", queue=GET_REPORT_FILES_QUEUE, bind=True)  # noqa: C901
-def get_report_files(  # noqa: C901
+@celery_app.task(name="masu.processor.tasks.get_report_files", queue=GET_REPORT_FILES_QUEUE, bind=True)
+def get_report_files(
     self,
     customer_name,
     authentication,
@@ -303,8 +303,8 @@ def remove_expired_data(schema_name, provider, simulate, provider_uuid=None, que
     _remove_expired_data(schema_name, provider, simulate, provider_uuid)
 
 
-@celery_app.task(name="masu.processor.tasks.summarize_reports", queue=SUMMARIZE_REPORTS_QUEUE)  # noqa: C901
-def summarize_reports(  # noqa: C901
+@celery_app.task(name="masu.processor.tasks.summarize_reports", queue=SUMMARIZE_REPORTS_QUEUE)
+def summarize_reports(
     reports_to_summarize, queue_name=None, manifest_list=None, ingress_report_uuid=None
 ):
     """
@@ -394,8 +394,8 @@ def summarize_reports(  # noqa: C901
                 ).apply_async(queue=queue_name or fallback_queue)
 
 
-@celery_app.task(name="masu.processor.tasks.update_summary_tables", queue=UPDATE_SUMMARY_TABLES_QUEUE)  # noqa: C901
-def update_summary_tables(  # noqa: C901
+@celery_app.task(name="masu.processor.tasks.update_summary_tables", queue=UPDATE_SUMMARY_TABLES_QUEUE)
+def update_summary_tables(
     schema,
     provider_type,
     provider_uuid,
@@ -612,7 +612,7 @@ def update_summary_tables(  # noqa: C901
         worker_cache.release_single_task(task_name, cache_args)
 
 
-@celery_app.task(name="masu.processor.tasks.delete_openshift_on_cloud_data", queue=DELETE_TRUNCATE_QUEUE)  # noqa: C901
+@celery_app.task(name="masu.processor.tasks.delete_openshift_on_cloud_data", queue=DELETE_TRUNCATE_QUEUE)
 def delete_openshift_on_cloud_data(
     schema_name,
     infrastructure_provider_uuid,
@@ -639,7 +639,7 @@ def delete_openshift_on_cloud_data(
     max_retries=settings.MAX_UPDATE_RETRIES,
     queue=UPDATE_SUMMARY_TABLES_QUEUE,
 )
-def update_openshift_on_cloud(  # noqa: C901
+def update_openshift_on_cloud(
     self,
     schema_name,
     openshift_provider_uuid,
@@ -842,7 +842,7 @@ def update_cost_model_costs(
 
 
 @celery_app.task(name="masu.processor.tasks.mark_manifest_complete", queue=MARK_MANIFEST_COMPLETE_QUEUE)
-def mark_manifest_complete(  # noqa: C901
+def mark_manifest_complete(
     schema,
     provider_type,
     provider_uuid="",
@@ -911,8 +911,8 @@ def normalize_table_options(table_options):
 # At this time, no table parameter will be lowered past the known production engine
 # setting of 0.2 by default. However this function's settings can be overridden via the
 # AUTOVACUUM_TUNING environment variable. See below.
-@celery_app.task(name="masu.processor.tasks.autovacuum_tune_schema", queue_name=DEFAULT)  # noqa: C901
-def autovacuum_tune_schema(schema_name):  # noqa: C901
+@celery_app.task(name="masu.processor.tasks.autovacuum_tune_schema", queue_name=DEFAULT)
+def autovacuum_tune_schema(schema_name):
     """Set the autovacuum table settings based on table size for the specified schema."""
     table_sql = """
 SELECT s.relname as "table_name",
@@ -1103,7 +1103,7 @@ def process_daily_openshift_on_cloud(
         Provider.PROVIDER_GCP: {
             "table": "gcp_line_items_daily",
             "date_columns": ["usage_start_time", "usage_end_time"],
-            "date_where_clause": "usage_start_time >= TIMESTAMP '{0}' AND usage_start_time < date_add('day', 1, TIMESTAMP '{0}')",  # noqa: E501
+            "date_where_clause": "usage_start_time >= TIMESTAMP '{0}' AND usage_start_time < date_add('day', 1, TIMESTAMP '{0}')",
         },
     }
     table_name = table_info.get(provider_type).get("table")

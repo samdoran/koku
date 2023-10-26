@@ -156,7 +156,7 @@ class OCILocalReportDownloaderTest(MasuTestCase):
     def test_empty_manifest(self):
         """Test an empty report is returned if no manifest."""
         # patch_sting is used to prevent reordered making the E501 useless
-        patch_string = "masu.external.downloader.oci_local.oci_local_report_downloader.OCILocalReportDownloader._generate_monthly_pseudo_manifest"  # noqa: E501
+        patch_string = "masu.external.downloader.oci_local.oci_local_report_downloader.OCILocalReportDownloader._generate_monthly_pseudo_manifest"
         with patch(patch_string) as patch_manifest:
             patch_manifest.side_effect = [None]
             report = self.oci_local_report_downloader.get_manifest_context_for_date(self.dh.this_month_start)

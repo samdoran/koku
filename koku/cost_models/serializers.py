@@ -231,7 +231,7 @@ class RateSerializer(serializers.Serializer):
 
             if (
                 next_tier is not None and usage_start is not None and Decimal(usage_start) > Decimal(next_tier)
-            ):  # noqa:W503
+            ):
                 error_msg = (
                     "tiered_rate must not have gaps between tiers."
                     "usage_start of {} should be less than or equal to the"

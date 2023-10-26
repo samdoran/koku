@@ -235,7 +235,7 @@ select {sel_cols}
     return records_copied
 
 
-def process_ocpawsazure_tables(schema_queue):  # noqa
+def process_ocpawsazure_tables(schema_queue):
     with connect() as conn:
         while True:
             msg = schema_queue.get()

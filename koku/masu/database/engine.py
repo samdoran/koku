@@ -15,7 +15,7 @@ def create_engine():
         (sqlalchemy.sql.schema.MetaData): "SQLAlchemy engine metadata"
 
     """
-    return None  # noqa
+    return None
 
 
 DB_ENGINE = None

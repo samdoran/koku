@@ -222,7 +222,7 @@ class OCPCloudParquetReportProcessor(ParquetReportProcessor):
                 if not accessor.get_cluster_for_provider(ocp_provider_uuid):
                     LOG.info(
                         log_json(
-                            msg=f"no cluster information available - skipping OCP on {self.provider_type} parquet processing",  # noqa: E501
+                            msg=f"no cluster information available - skipping OCP on {self.provider_type} parquet processing",
                             context=ctx,
                         )
                     )
@@ -231,7 +231,7 @@ class OCPCloudParquetReportProcessor(ParquetReportProcessor):
                 if not accessor.report_periods_for_provider_uuid(ocp_provider_uuid, self.start_date):
                     LOG.info(
                         log_json(
-                            msg=f"no matching report periods available for cluster - skipping OCP on {self.provider_type} parquet processing",  # noqa: E501
+                            msg=f"no matching report periods available for cluster - skipping OCP on {self.provider_type} parquet processing",
                             context=ctx,
                         )
                     )

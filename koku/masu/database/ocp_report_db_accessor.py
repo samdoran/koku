@@ -195,7 +195,7 @@ class OCPReportDBAccessor(SQLScriptAtomicExecutorMixin, ReportDBAccessorBase):
 
         return db_results
 
-    def get_ocp_infrastructure_map_trino(self, start_date, end_date, **kwargs):  # noqa: C901
+    def get_ocp_infrastructure_map_trino(self, start_date, end_date, **kwargs):
         """Get the OCP on infrastructure map.
 
         Args:
@@ -605,7 +605,7 @@ class OCPReportDBAccessor(SQLScriptAtomicExecutorMixin, ReportDBAccessorBase):
         LOG.info(log_json(msg="populating monthly costs", context=ctx))
         self._prepare_and_execute_raw_sql_query(table_name, sql, sql_params, operation="INSERT")
 
-    def populate_monthly_tag_cost_sql(  # noqa: C901
+    def populate_monthly_tag_cost_sql(
         self, cost_type, rate_type, tag_key, case_dict, start_date, end_date, distribution, provider_uuid
     ):
         """
@@ -759,7 +759,7 @@ class OCPReportDBAccessor(SQLScriptAtomicExecutorMixin, ReportDBAccessorBase):
         LOG.info(log_json(msg=f"populating {rate_type} usage costs", context=ctx))
         self._prepare_and_execute_raw_sql_query(table_name, sql, sql_params, operation="INSERT")
 
-    def populate_tag_usage_costs(  # noqa: C901
+    def populate_tag_usage_costs(
         self, infrastructure_rates, supplementary_rates, start_date, end_date, cluster_id
     ):
         """
@@ -839,7 +839,7 @@ class OCPReportDBAccessor(SQLScriptAtomicExecutorMixin, ReportDBAccessorBase):
                         LOG.info(log_json(msg="running populate_tag_usage_costs SQL", context=ctx))
                         self._prepare_and_execute_raw_sql_query(table_name, sql, sql_params)
 
-    def populate_tag_usage_default_costs(  # noqa: C901
+    def populate_tag_usage_default_costs(
         self, infrastructure_rates, supplementary_rates, start_date, end_date, cluster_id
     ):
         """
@@ -1044,7 +1044,7 @@ class OCPReportDBAccessor(SQLScriptAtomicExecutorMixin, ReportDBAccessorBase):
                 AND nl.interval_start < date_add('day', 1, TIMESTAMP '{end_date}')
             GROUP BY ocp.node,
                 ocp.resource_id
-        """  # noqa: E501
+        """
         context = {"schema": self.schema, "start": start_date, "end": end_date, "provider_uuid": source_uuid}
         return self._execute_trino_raw_sql_query(sql, context=context, log_ref="get_nodes_trino")
 

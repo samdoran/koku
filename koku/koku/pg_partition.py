@@ -895,7 +895,7 @@ SELECT level,
    AND (object_type = ANY('{SCHEMA,TABLE}'::text[]) or
         object_type ~ '^M*VIEW RULE')
  ORDER BY level desc, dependency_chain ;
-"""  # noqa:E501
+"""
         hierarchy = fetchall(conn_execute(hierarchy_sql, [f'"{self.source_schema}"."{self.source_table_name}"']))
         # The hierarchy will be stored with the lowest level first or in destroy-order
         res = []
@@ -1876,7 +1876,7 @@ def get_or_create_partition(part_rec, _default_partition=None):
 
 
 class PartitionHandlerMixin:
-    def _handle_partitions(self, schema_name, table_names, start_date, end_date):  # noqas: C901
+    def _handle_partitions(self, schema_name, table_names, start_date, end_date):
         if isinstance(start_date, datetime.datetime):
             start_date = start_date.date()
         elif isinstance(start_date, str):

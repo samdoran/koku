@@ -391,7 +391,7 @@ class ParquetReportProcessor:
         manifest_accessor.mark_s3_parquet_cleared(manifest, parquet_cleared_key)
         LOG.info(log_json(msg="removed s3 files and marked manifest s3_parquet_cleared", context=self._context))
 
-    def convert_to_parquet(self):  # noqa: C901
+    def convert_to_parquet(self):
         """
         Convert archived CSV data from our S3 bucket for a given provider to Parquet.
 
@@ -498,7 +498,7 @@ class ParquetReportProcessor:
                         ingressreport_accessor.update_ingress_report_status(self.ingress_reports_uuid, message)
                 raise ValidationError(message, code="Missing_columns")
 
-    def convert_csv_to_parquet(self, csv_filename: os.PathLike):  # noqa: C901
+    def convert_csv_to_parquet(self, csv_filename: os.PathLike):
         """Convert CSV file to parquet and send to S3."""
         post_processor = self._set_post_processor()
         if not post_processor:

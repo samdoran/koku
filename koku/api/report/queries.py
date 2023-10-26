@@ -307,7 +307,7 @@ class ReportQueryHandler(QueryHandler):
             composed_filters = and_composed_filters & or_composed_filters & exact_composed_filters
         return composed_filters
 
-    def _get_search_filter(self, filters):  # noqa C901
+    def _get_search_filter(self, filters):  # C901
         """Populate the query filter collection for search filters.
 
         Args:
@@ -794,7 +794,7 @@ class ReportQueryHandler(QueryHandler):
             prefix_mapping[AWS_CATEGORY_PREFIX] = aws_category_column
         for prefix, db_column in prefix_mapping.items():
             if group.startswith(db_column + "__"):
-                group = group[len(db_column + "__") :]  # noqa
+                group = group[len(db_column + "__") :]
                 check_pack_prefix = prefix
         if check_pack_prefix and group in all_pack_keys:
             group = check_pack_prefix + group
@@ -862,7 +862,7 @@ class ReportQueryHandler(QueryHandler):
 
         return output
 
-    def _pack_data_object(self, data, **kwargs):  # noqa: C901
+    def _pack_data_object(self, data, **kwargs):
         """Pack data into object format."""
         if not isinstance(data, dict):
             return data
@@ -1071,7 +1071,7 @@ class ReportQueryHandler(QueryHandler):
         except (DivisionByZero, ZeroDivisionError, InvalidOperation):
             return None
 
-    def _group_by_ranks(self, query, data):  # noqa: C901
+    def _group_by_ranks(self, query, data):
         """Handle grouping data by filter limit."""
         group_by_value = self._get_group_by()
         gb = group_by_value if group_by_value else ["date"]
@@ -1135,7 +1135,7 @@ class ReportQueryHandler(QueryHandler):
                 distinct_ranks.append(rank)
         return self._ranked_list(data, distinct_ranks, set(rank_annotations))
 
-    def _ranked_list(self, data_list, ranks, rank_fields=None):  # noqa C901
+    def _ranked_list(self, data_list, ranks, rank_fields=None):  # C901
         """Get list of ranked items less than top.
 
         Args:

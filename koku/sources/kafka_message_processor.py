@@ -237,7 +237,7 @@ class ApplicationMsgProcessor(KafkaMessageProcessor):
         self.source_id = int(self.value.get("source_id"))
         self.application_type_id = int(self.value.get("application_type_id", -1))
 
-    def process(self):  # noqa: C901
+    def process(self):
         """Process the message."""
         if self.event_type in (KAFKA_APPLICATION_CREATE,):
             LOG.debug(f"[ApplicationMsgProcessor] creating source for source_id: {self.source_id}")

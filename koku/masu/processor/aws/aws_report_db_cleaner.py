@@ -61,7 +61,7 @@ class AWSReportDBCleaner:
         all_period_start = set()
 
         with AWSReportDBAccessor(self._schema) as accessor:
-            if (expired_date is None and provider_uuid is None) or (  # noqa: W504
+            if (expired_date is None and provider_uuid is None) or (
                 expired_date is not None and provider_uuid is not None
             ):
 
