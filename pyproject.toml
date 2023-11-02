@@ -1,0 +1,44 @@
+[tool.ruff]
+required-version = "0.1.2"
+line-length = 119
+target-version = "py39"
+src = ["koku"]
+extend-exclude = [
+  "**/migrations/*.py",
+  "**/manage.py",
+  "**/settings.py",
+  "**/.unleash/",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle
+    "F",  # PyFlakes
+    # "I",  # isort
+    "C90",  # mccabe
+
+    "YTT",  # flake8-2020
+    "SIM",  # flake8-simplify
+
+    "PL",  # pylint
+    "FLY",  # flynt
+    "UP",  # pyupgrade
+    "PERF",  # perflint
+    "RUF100",  # unused noqa
+    ]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"koku/reporting/models.py" = ["F401"]
+
+[tool.ruff.isort]
+force-single-line = true
+lines-after-imports = 2
+case-sensitive = false
+lines-between-types = 1
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["E203", "W503"]
+
+[tool.ruff.mccabe]
+max-complexity = 10
