@@ -258,14 +258,6 @@ def wait_for_migrations(sender, instance, **kwargs):  # pragma: no cover
         debugpy.wait_for_client()
 
 
-@worker_process_init.connect
-def init_worker(**kwargs):
-    from koku.feature_flags import UNLEASH_CLIENT
-
-    LOG.debug("Initializing UNLEASH_CLIENT for celery worker.")
-    UNLEASH_CLIENT.initialize_client()
-
-
 @worker_process_shutdown.connect
 def shutdown_worker(**kwargs):
     from koku.feature_flags import UNLEASH_CLIENT
