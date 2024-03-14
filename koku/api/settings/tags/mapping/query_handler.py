@@ -18,6 +18,10 @@ class Relationship:
     child: TagKey = None
     children: list[TagKey] = dataclasses.field(default_factory=list)
 
+    def __post_init__(self):
+        if self.child is None:
+            self.__dataclass_fields__ = {key: value for key, value in self.__dataclass_fields__.items() if key != "child"}
+
     @classmethod
     def create_from_data(cls, data: list[dict[str: dict[str: uuid.UUID | str]]]):
         return [
