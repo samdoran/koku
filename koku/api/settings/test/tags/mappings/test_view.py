@@ -10,8 +10,8 @@ from django_tenants.utils import tenant_context
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from api.settings.tags.mapping.models import Relationship
-from api.settings.tags.mapping.models import TagKey
+from api.settings.tags.mapping.query_handler import Relationship
+from api.settings.tags.mapping.query_handler import TagKey
 from api.settings.tags.mapping.query_handler import format_tag_mapping_relationship
 from api.settings.tags.mapping.utils import retrieve_tag_rate_mapping
 from api.settings.tags.mapping.view import SettingsTagMappingFilter
@@ -230,9 +230,7 @@ class TestSettingsTagMappingView(MasuTestCase):
         """
 
         json_data = json.loads(sample_data)
-        relationships = [
-            Relationship(TagKey(**item["parent"]), TagKey(**item["child"])).to_dict() for item in json_data
-        ]
+        relationships = Relationship.create_from_data(json_data)
         result = format_tag_mapping_relationship(relationships)
 
         # Check if result has 'children' key
