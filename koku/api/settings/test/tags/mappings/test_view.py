@@ -186,6 +186,7 @@ class TestSettingsTagMappingView(MasuTestCase):
         """Test the get method format for the tag mapping view"""
 
         sample_data = [
+            # Parent with three children
             {
                 "child": {
                     "key": "environment",
@@ -222,6 +223,31 @@ class TestSettingsTagMappingView(MasuTestCase):
                     "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
                 },
             },
+            # Parent with two children
+            {
+                "child": {
+                    "uuid": "135ed068-18cb-44fe-8d1c-1e7f389bcbe8",
+                    "key": "openshift_project",
+                    "source_type": "AWS",
+                },
+                "parent": {
+                    "key": "stack",
+                    "source_type": "AWS",
+                    "uuid": "1ab796d3-37ac-4ae5-b218-688ea3b5a5f4",
+                },
+            },
+            {
+                "child": {
+                    "uuid": "e789bbc7-e2b7-45f6-b611-e90dd2e0749e",
+                    "key": "com_REDHAT_rhel",
+                    "source_type": "AWS",
+                },
+                "parent": {
+                    "key": "stack",
+                    "source_type": "AWS",
+                    "uuid": "1ab796d3-37ac-4ae5-b218-688ea3b5a5f4",
+                },
+            },
         ]
 
         relationships = Relationship.create_list_of_relationships(sample_data)
@@ -231,6 +257,11 @@ class TestSettingsTagMappingView(MasuTestCase):
         )
         self.assertFalse(
             any(getattr(relationship, "child", None) for relationship in relationships), "Child key should not exist"
+        )
+        self.assertEqual(
+            [len(relationship.children) for relationship in relationships],
+            [3, 2],
+            "Number of expected children is incorrect",
         )
 
     @patch("api.settings.tags.mapping.utils.get_cached_tag_rate_map")
