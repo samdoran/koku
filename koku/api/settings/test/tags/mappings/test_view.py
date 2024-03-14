@@ -2,7 +2,6 @@
 # Copyright 2024 Red Hat Inc.
 # SPDX-License-Identifier: Apache-2.0
 #
-import json
 from unittest.mock import patch
 
 from django.urls import reverse
@@ -11,8 +10,6 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from api.settings.tags.mapping.query_handler import Relationship
-from api.settings.tags.mapping.query_handler import TagKey
-from api.settings.tags.mapping.query_handler import format_tag_mapping_relationship
 from api.settings.tags.mapping.utils import retrieve_tag_rate_mapping
 from api.settings.tags.mapping.view import SettingsTagMappingFilter
 from masu.test import MasuTestCase
@@ -188,55 +185,53 @@ class TestSettingsTagMappingView(MasuTestCase):
     def test_format_tag_mapping_relationship(self):
         """Test the get method format for the tag mapping view"""
 
-        sample_data = """
-        [
+        sample_data = [
             {
-                "parent": {
-                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
-                    "key": "storageclass",
-                    "source_type": "Azure"
-                },
                 "child": {
-                    "uuid": "787d0e27-bf01-4f1e-91da-4148d9acae82",
                     "key": "environment",
-                    "source_type": "Azure"
-                }
+                    "source_type": "Azure",
+                    "uuid": "787d0e27-bf01-4f1e-91da-4148d9acae82",
+                },
+                "parent": {
+                    "key": "storageclass",
+                    "source_type": "Azure",
+                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
+                },
             },
             {
-                "parent": {
-                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
-                    "key": "storageclass",
-                    "source_type": "Azure"
-                },
                 "child": {
-                    "uuid": "09eae71b-4665-4958-9649-9031ee67180b",
                     "key": "CreatedOn",
-                    "source_type": "OCI"
-                }
+                    "source_type": "OCI",
+                    "uuid": "09eae71b-4665-4958-9649-9031ee67180b",
+                },
+                "parent": {
+                    "key": "storageclass",
+                    "source_type": "Azure",
+                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
+                },
             },
             {
-                "parent": {
-                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
-                    "key": "storageclass",
-                    "source_type": "Azure"
-                },
                 "child": {
-                    "uuid": "00398f0a-bdb7-4fd3-841f-b9cd476cab7e",
                     "key": "free-tier-retained",
-                    "source_type": "OCI"
-                }
-            }
+                    "source_type": "OCI",
+                    "uuid": "00398f0a-bdb7-4fd3-841f-b9cd476cab7e",
+                },
+                "parent": {
+                    "key": "storageclass",
+                    "source_type": "Azure",
+                    "uuid": "17c77152-05a9-4b53-968c-dd42f7fd859b",
+                },
+            },
         ]
-        """
 
-        json_data = json.loads(sample_data)
-        relationships = Relationship.create_from_data(json_data)
-        result = format_tag_mapping_relationship(relationships)
+        relationships = Relationship.create_list_of_relationships(sample_data)
 
-        # Check if result has 'children' key
-        for item in result:
-            self.assertTrue("children" in item, "Item does not have 'children' key")
-            self.assertFalse("child" in item, "Item has 'child' key")
+        self.assertTrue(
+            all(getattr(relationship, "children", None) for relationship in relationships), "Missing children"
+        )
+        self.assertFalse(
+            any(getattr(relationship, "child", None) for relationship in relationships), "Child key should not exist"
+        )
 
     @patch("api.settings.tags.mapping.utils.get_cached_tag_rate_map")
     def test_cached_tag_rate_mapping(self, mock_get):
