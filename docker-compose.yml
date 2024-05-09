@@ -446,12 +446,21 @@ services:
         USER_ID: ${USER_ID:?}
         GROUP_ID: ${GROUP_ID:?}
     environment:
-      - POSTGRES_DB=${DATABASE_NAME-postgres}
-      - POSTGRES_USER=${DATABASE_USER-postgres}
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD-postgres}
-      - _PG_CREATE_DATABASES=${DATABASE_NAME-postgres}|${DATABASE_USER-postgres},unleash|${DATABASE_USER-postgres}
+      POSTGRES_DB: ${DATABASE_NAME-postgres}
+      POSTGRES_USER: ${DATABASE_USER-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD-postgres}
+      _PG_CREATE_DATABASES: ${DATABASE_NAME-postgres}|${DATABASE_USER-postgres},unleash|${DATABASE_USER-postgres}
     ports:
       - ${POSTGRES_SQL_SERVICE_PORT-15432}:5432
+    healthcheck:
+      test:
+        - "CMD"
+        - "pg_isready"
+        - "--host=127.0.0.1"
+        - "--port=5432"
+      interval: 1s
+      timeout: 30s
+      retries: 10
     volumes:
       - ./pg_data/data:/var/lib/${DATABASE_DATA_DIR-postgresql}/data
     command:
@@ -565,7 +574,8 @@ services:
     ports:
       - 4242:4242
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   minio:
     container_name: koku-minio
