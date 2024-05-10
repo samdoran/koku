@@ -111,9 +111,6 @@ help:
 	@echo "  superuser                             create a Django super user"
 	@echo "  unittest                              run unittests"
 	@echo "  local-upload-data                     upload data to Ingress if it is up and running locally"
-	@echo "  unleash-export                        export feature-flags to file"
-	@echo "  unleash-import                        import feature-flags from file"
-	@echo "  unleash-import-drop                   import feature-flags from file AND wipe current database"
 	@echo "  scan_project                          run security scan"
 	@echo ""
 	@echo "--- Commands using Docker Compose ---"
@@ -255,19 +252,6 @@ unittest:
 
 superuser:
 	$(DJANGO_MANAGE) createsuperuser
-
-unleash-export:
-	curl -X GET -H "Authorization: Basic YWRtaW46" \
-	"http://localhost:4242/api/admin/state/export?format=json&featureToggles=1&strategies=0&tags=0&projects=0&download=1" \
-	-s | python -m json.tool > .unleash/flags.json
-
-unleash-import:
-	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW46" \
-	-s -d @.unleash/flags.json http://localhost:4242/api/admin/state/import
-
-unleash-import-drop:
-	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW46" \
-	-s -d @.unleash/flags.json http://localhost:4242/api/admin/state/import?drop=true
 
 clowdapp: kustomize
 	$(KUSTOMIZE) build deploy/kustomize > deploy/clowdapp.yaml
